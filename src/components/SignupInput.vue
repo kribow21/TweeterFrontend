@@ -1,33 +1,96 @@
 <template>
-    <div>
-        <form id="Form" action="javascript:void(0)">
-            <label for="email">Email</label>
-            <input v-model="email" type="text" id="email">
-            <label for="username">Username</label>
-            <input v-model="username" type="text" id="username">
-            <label for="password">Password</label>
-            <input v-model="password" type="text" name="password" id="password">
-            <label for="profileBio">Profile Bio</label>
-            <input v-model="proBio" type="text" name="bio" id="proBio">
-            <label for="birthday">Birthday</label>
-            <input v-model="birthday" type="date" name="birthday" id="birthDate">
-            <label for="profileURl">Profile Picture</label>
-            <input v-model="proPic" type="url" id="picUrl">
-        </form>
-        <button @click="makeSignupCall" id="signUp">Sign Up</button>
-    </div>
+    <v-form>
+    <v-container>
+        <v-row>
+        <v-col
+            cols="12"
+            sm="6"
+            md="3"
+        >
+        <v-text-field
+            label="Email"
+            v-model="userEmail"
+            outlined
+        ></v-text-field>
+        </v-col>
+        <v-col
+            cols="12"
+            sm="6"
+            md="3"
+        >
+        <v-text-field
+            label="Username"
+            v-model="userUsername"
+            outlined
+        ></v-text-field>
+        </v-col>
+            <v-col
+            cols="12"
+            sm="6"
+            md="3"
+        >
+        <v-text-field
+            label="Password"
+            v-model="userPassword"
+            :type="'password'"
+            outlined
+        ></v-text-field>
+        </v-col>
+        <v-col
+            cols="12"
+            sm="6"
+            md="3"
+        >
+        <v-text-field
+            label="Profile Bio"
+            v-model="proBio"
+            outlined
+        ></v-text-field>
+        </v-col>
+        <v-col
+            cols="12"
+            sm="6"
+            md="3"
+        >
+        <v-text-field
+            label="Profile Pic"
+            v-model="proPic"
+            outlined
+        ></v-text-field>
+        </v-col>
+        <v-col
+            cols="12"
+            sm="6"
+            md="3"
+        >
+        <v-text-field
+            label="YYYY-MM-DD"
+            v-model="birthday"
+            outlined
+        ></v-text-field>
+        </v-col>
+        
+    </v-row>
+            <v-btn
+            @click="makeSignupCall"
+            color="primary"
+            elevation="2"
+            raised
+            >Sign Up</v-btn>
+    </v-container>
+    </v-form>    
 </template>
 
 <script>
 import axios from "axios";
-
+import cookies from "vue-cookies"
     export default {
         name : 'SignupInput',
         data() {
             return {
-                email : "",
-                username : "",
-                password : "",
+                userEmail : "",
+                userUsername : "",
+                userPassword : "",
                 proBio : "",
                 birthday : "",
                 proPic : "",
@@ -44,17 +107,19 @@ import axios from "axios";
                     },
                     data : 
                         { 
-                        "email": this.email,
-                        "username": this.username,
-                        "password": this.password,
+                        "email": this.userEmail,
+                        "username": this.userUsername,
+                        "password": this.userPassword,
                         "bio": this.proBio,
                         "birthdate": this.birthday,
                         "imageUrl": this.proPic,
                         }
                     }).then((response) => {
                     console.log(response);
+                    cookies.set('loginToken', response.data.loginToken)
                     }).catch((error) => {
                     console.error("There was an error" +error);
+                    console.log(this.email)
                     })
                 }
         }
@@ -63,9 +128,5 @@ import axios from "axios";
 </script>
 
 <style scoped>
-form{
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(2 , 1fr);
-}
+
 </style>
