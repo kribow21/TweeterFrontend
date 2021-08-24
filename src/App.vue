@@ -23,6 +23,7 @@
           src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
           width="100"
         />
+
       </div>
 
       <v-spacer></v-spacer>
@@ -38,6 +39,8 @@
     </v-app-bar>
 
     <v-main>
+              <router-link to="/">Login</router-link>
+        <router-link to="/Signup">Sign Up</router-link>
       <router-view/>
     </v-main>
   </v-app>
