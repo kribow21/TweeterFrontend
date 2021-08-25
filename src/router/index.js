@@ -5,6 +5,7 @@ import Signup from '../views/Signup.vue'
 import Feed from '../views/Feed.vue'
 import Profile from '../views/Profile.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,7 +27,7 @@ const routes = [
   {
     path: '/Profile',
     name: 'Profile',
-    component: Profile
+    component: Profile,
   }
 ]
 

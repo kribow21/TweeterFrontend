@@ -13,24 +13,9 @@
                 elevation="2"
                 raised
             >Follow Profile</v-btn>
-            <v-btn
-                @click="editProfile"
-                class="ma-2"
-                color="secondary"
-                dark
-                >
-                <v-icon dark>
-                mdi-account-cog-outline
-                </v-icon>
-            </v-btn>
+
             </v-col>
         </v-row>
-        <v-btn
-            @click="deleteProfile"
-            color="primary"
-            elevation="2"
-            raised
-        >Delete Profile</v-btn>
     </v-container>
 </template>
 
@@ -73,31 +58,11 @@ import cookies from "vue-cookies"
                     console.error("There was an error" +error);
                 })
             },
-            deleteProfile(){
-                    axios.request({
-                    url : "https://tweeterest.ml/api/users",
-                    method : "DELETE",
-                    headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
-                        'Content-Type': 'application/json'
-                    },
-                    params : {
-                        loginToken : cookies.get('loginToken'),
-                        password : "",
-                    }
-                }).then((response) => {
-                    console.log(response);    
 
-                }).catch((error) => {
-                    console.error("There was an error" +error);
-                })
-            },
             followUser(){
                 console.log("clicked");
             },
-            editProfile(){
-                console.log("click");
-            }
+
             }
         }
 </script>
