@@ -4,6 +4,7 @@
       app
       color="primary"
       dark
+      height='60px'
     >
       <div class="d-flex align-center">
         <v-img
@@ -24,6 +25,8 @@
     <v-main>
         <router-link to="/">Login</router-link>
         <router-link to="/Signup">Sign Up</router-link>
+        <router-link to="/Feed">Home Feed</router-link>
+        <router-link to="/Profile">Profile</router-link>
       <router-view/>
     </v-main>
   </v-app>
