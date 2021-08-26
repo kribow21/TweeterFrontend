@@ -1,0 +1,59 @@
+                profiles : [
+                    {
+                        userId 1154,
+                    email : "brooklynrae@gmail.com",
+                    username : "Brooklyn11",
+                    password : "konahoneybear",
+                    birthday : "01-11-1996",
+                    imageUrl : "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
+                    },
+                    {
+                    email : "missbrooke@gmail.com",
+                    username : "PhotographerBrooke",
+                    password : "rosabear",
+                    birthday : "05-20-2000",
+                    imageUrl : "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA2fHxwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                    },
+                    {
+                    email : "kenziemae@gmail.com",
+                    username : "Kenziethefairy",
+                    password : "juniperkittycat",
+                    birthday : "10-11-1998",
+                    imageUrl : "https://images.unsplash.com/photo-1618508035424-73ad1a15006c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTEyfHxwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                    },
+                    {
+                    email : "ashleybri@gmail.com",
+                    username : "Justpeachy",
+                    password : "tooglamforyou",
+                    birthday : "08-01-1994",
+                    imageUrl : "https://images.unsplash.com/photo-1535207010348-71e47296838a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                    },
+                    {
+                    email : "lisaann@gmail.com",
+                    username : "CoffeePlz",
+                    password : "lunabear",
+                    birthday : "07-15-1980",
+                    imageUrl : "https://images.unsplash.com/photo-1535207010348-71e47296838a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                    },
+                    {
+                    email : "curtismark@gmail.com",
+                    username : "kleatus",
+                    password : "raveallnight",
+                    birthday : "06-06-1993",
+                    imageUrl : "https://images.unsplash.com/photo-1535207010348-71e47296838a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                    },
+                    {
+                    email : "nolan@gmail.com",
+                    username : "Nolan_dude",
+                    password : "spaceiscool",
+                    birthday : "10-02-1995",
+                    imageUrl : "https://images.unsplash.com/photo-1535207010348-71e47296838a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"  
+                    },
+                    {
+                    email : "richyrich@gmail.com",
+                    username : "MoneyMaker",
+                    password : "millionairbyretirement",
+                    birthday : "25-03-1990",
+                    imageUrl : "https://images.unsplash.com/photo-1535207010348-71e47296838a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQzfHxwZXJzb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                    }
+                ]
