@@ -1,8 +1,8 @@
 <template>
     <v-form>
         <v-container>
-        <v-row>
-        <v-col
+            <v-row>
+            <v-col
             cols="12"
             sm="6"
             md="3"
@@ -25,14 +25,16 @@
             outlined
             ></v-text-field>
         </v-col>
-        </v-row>
-        <v-btn
-            @click="makeLoginRequest"
-            color="primary"
-            elevation="2"
-            raised
-        >Log In</v-btn>
+            </v-row>
+        <div>
+            <v-btn
+                @click="makeLoginRequest"
+                color="primary"
+                elevation="2"
+                raised
+            >Log In</v-btn>
             <h3 id="failResponse"></h3>
+        </div>
         </v-container>
     </v-form>
 </template>
@@ -77,5 +79,7 @@ import cookies from "vue-cookies"
 </script>
 
 <style scoped>
-
+.container{
+    margin-top: 3%;
+}
 </style>

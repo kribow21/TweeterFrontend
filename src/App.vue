@@ -2,9 +2,9 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="secondary"
       dark
-      height='60px'
+      height='70px'
     >
       <div class="d-flex align-center">
         <v-img
@@ -13,20 +13,24 @@
           contain
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzjMyQtDIsNe5jSvv7pd37B-Ku0sjD_UX4jQ&usqp=CAU"
           transition="scale-transition"
-          width="40"
+          width="50"
         />
-
-      </div>
-
-      <v-spacer></v-spacer>
-
-    </v-app-bar>
-
-    <v-main>
         <router-link to="/">Login</router-link>
         <router-link to="/Signup">Sign Up</router-link>
         <router-link to="/Feed">Home Feed</router-link>
         <router-link to="/Profile">Profile</router-link>
+      </div>
+
+      <v-spacer></v-spacer>
+            <v-btn
+            color="primary"
+            elevation="2"
+            raised
+            >Log Out</v-btn>
+
+    </v-app-bar>
+  
+    <v-main>
       <router-view/>
     </v-main>
   </v-app>
@@ -42,3 +46,9 @@ export default {
   }),
 };
 </script>
+<style scoped>
+a{
+  padding: 10px;
+  text-decoration: none;
+}
+</style>

@@ -3,6 +3,7 @@
         <UserProfile/>
         <ProfileEditComp/>
         <ProfileDeleteComp/>
+        <ProfileTabBar/>
     </div>
 </template>
 
@@ -10,12 +11,14 @@
 import UserProfile from '../components/UserProfile.vue'
 import ProfileEditComp from '../components/ProfileEditComp.vue'
 import ProfileDeleteComp from '../components/ProfileDeleteComp.vue'
+import ProfileTabBar from '../components/ProfileTabBar.vue'
     export default {
         name : 'Profile',
         components: {
             UserProfile,
             ProfileEditComp,
-            ProfileDeleteComp
+            ProfileDeleteComp,
+            ProfileTabBar
         },
     }
 </script>
