@@ -2,6 +2,7 @@
     <div>
         <v-textarea
         outlined
+        clearable
         name="input-7-4"
         label="Create A Tweet"
         v-model="tweetInput"
@@ -12,9 +13,6 @@
             elevation="2"
             raised
         >Post</v-btn>
-        <div>
-
-        </div>
     </div>
 </template>
 
@@ -53,5 +51,7 @@ import cookies from "vue-cookies"
 </script>
 
 <style scoped>
-
+div{
+    margin: 3% 10% 0 10%;
+}
 </style>

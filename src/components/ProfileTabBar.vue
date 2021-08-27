@@ -12,7 +12,7 @@
             </v-tabs>
         </template>
     </v-toolbar>
-    <TweetBody 
+    <ProfileTweetBody 
     @UpdateUserTweets="showMyTweets" v-for="tweet in userTweets"
     v-bind:key="tweet.tweetId"
     :username="tweet.username"
@@ -27,11 +27,11 @@
 <script>
 import axios from "axios";
 import cookies from "vue-cookies"
-import TweetBody from './TweetBody.vue'
+import ProfileTweetBody from './ProfileTweetBody.vue'
     export default {
         name : 'ProfileTabBar',
         components: {
-            TweetBody,
+            ProfileTweetBody,
         },
         data() {
             return {
