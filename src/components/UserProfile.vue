@@ -7,13 +7,8 @@
             <v-col>
                 <h3>{{username}}</h3>
                 <p>{{proBio}}</p>
-            <v-btn
-                @click="followUser"
-                color="primary"
-                elevation="2"
-                raised
-            >Follow Profile</v-btn>
-
+                <ProfileEditComp/>
+                <ProfileDeleteComp/>
             </v-col>
         </v-row>
     </v-container>
@@ -22,8 +17,14 @@
 <script>
 import axios from "axios";
 import cookies from "vue-cookies"
+import ProfileEditComp from './ProfileEditComp.vue'
+import ProfileDeleteComp from './ProfileDeleteComp.vue'
     export default {
         name : 'UserProfile',
+        components: {
+            ProfileEditComp,
+            ProfileDeleteComp
+        },
         data() {
             return {
                 userPic: "",
@@ -58,22 +59,12 @@ import cookies from "vue-cookies"
                     console.error("There was an error" +error);
                 })
             },
-
-            followUser(){
-                console.log("clicked");
-            },
-
             }
         }
 </script>
 
 <style scoped>
 img{
-    width: 200px;
-}
-.container{
-    display: grid;
-    justify-content: center;
-
+    width: 250px;
 }
 </style>

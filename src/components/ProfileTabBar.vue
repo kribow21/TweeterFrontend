@@ -11,23 +11,29 @@
             </v-tabs>
         </template>
     </v-toolbar>
-    <div id="tweet">
-        <h3>{{tweetContent}}</h3>
-        <p>{{timeStamp}}</p>
-    </div>
+    <TweetBody v-for="tweet in userTweets"
+    v-bind:key="tweet.tweetId"
+    :username="tweet.username"
+    :tweetImageUrl="tweet.tweetImageUrl"
+    :content="tweet.content"
+    :createdAt="tweet.createdAt"
+    :tweetId="tweet.tweetId"
+    :imageUrl="tweet.imageUrl"/>
     </div>
 </template>
 
 <script>
 import axios from "axios";
 import cookies from "vue-cookies"
+import TweetBody from './TweetBody.vue'
     export default {
         name : 'ProfileTabBar',
+        components: {
+            TweetBody,
+        },
         data() {
             return {
-                tweetContent: "",
-                timeStamp: "",
-                tweetID: ""
+                userTweets : []
             }
         },
         methods: {
@@ -44,9 +50,7 @@ import cookies from "vue-cookies"
                     }
                 }).then((response) => {
                     console.log(response); 
-                        this.tweetContent = response.data[0].content;
-                        this.timeStamp = response.data[0].createdAt;
-                        this.tweetID = response.data[0].tweetId;
+                        this.userTweets = response.data.reverse();
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })

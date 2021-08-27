@@ -44,15 +44,16 @@
             v-model="birthday"
             outlined
         ></v-text-field>
-        </v-col>
-        
-    </v-row>
             <v-btn
             @click="makeSignupCall"
             color="primary"
             elevation="2"
             raised
             >Sign Up</v-btn>
+        </v-col>
+        
+    </v-row>
+
     </v-container>
     </v-form>    
 </template>
@@ -107,5 +108,8 @@ import cookies from "vue-cookies"
 <style scoped>
 .container{
     margin-top: 3%;
+}
+.row{
+    justify-content: center;
 }
 </style>

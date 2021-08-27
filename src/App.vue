@@ -18,7 +18,10 @@
         <router-link to="/">Login</router-link>
         <router-link to="/Signup">Sign Up</router-link>
         <router-link to="/Feed">Home Feed</router-link>
+        <router-link to="/Discover">Discover</router-link>
         <router-link to="/Profile">Profile</router-link>
+
+
       </div>
 
       <v-spacer></v-spacer>

@@ -25,8 +25,6 @@
             outlined
             ></v-text-field>
         </v-col>
-            </v-row>
-        <div>
             <v-btn
                 @click="makeLoginRequest"
                 color="primary"
@@ -34,7 +32,7 @@
                 raised
             >Log In</v-btn>
             <h3 id="failResponse"></h3>
-        </div>
+            </v-row>
         </v-container>
     </v-form>
 </template>
@@ -81,5 +79,8 @@ import cookies from "vue-cookies"
 <style scoped>
 .container{
     margin-top: 3%;
+}
+.row{
+    justify-content: center;
 }
 </style>
