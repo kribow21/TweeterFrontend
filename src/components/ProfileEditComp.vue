@@ -76,6 +76,7 @@
                     mdi-lock-check-outline
                     </v-icon>
                 </v-btn>
+                <p id="confirmResponse"></p>
                 </v-col>
             </v-row>
             </v-container>
@@ -122,7 +123,9 @@ import cookies from "vue-cookies"
                         "birthdate": this.birthday
                     }
                 }).then((response) => {
-                    console.log(response);    
+                    console.log(response); 
+                    document.getElementById('confirmResponse').innerText="Changes confirmed"
+
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
