@@ -1,11 +1,11 @@
 <template>
     <div>
         <v-textarea
-        outlined
-        clearable
-        name="input-7-4"
-        label="Create A Tweet"
-        v-model="tweetInput"
+            outlined
+            clearable
+            name="input-7-4"
+            label="Create A Tweet"
+            v-model="tweetInput"
         ></v-textarea>
         <v-btn
             @click="submitTweet"
