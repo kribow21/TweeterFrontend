@@ -4,14 +4,16 @@
         <template v-slot:extension>
             <v-tabs align-with-title>
             <v-tab
-            @click="showMyTweets">Tweets</v-tab>
+            @click="showMyTweets"
+            >Tweets</v-tab>
             <v-tab>Followers</v-tab>
             <v-tab>Following</v-tab>
             <v-tab>Likes</v-tab>
             </v-tabs>
         </template>
     </v-toolbar>
-    <TweetBody v-for="tweet in userTweets"
+    <TweetBody 
+    @UpdateUserTweets="showMyTweets" v-for="tweet in userTweets"
     v-bind:key="tweet.tweetId"
     :username="tweet.username"
     :tweetImageUrl="tweet.tweetImageUrl"
@@ -36,8 +38,12 @@ import TweetBody from './TweetBody.vue'
                 userTweets : []
             }
         },
+        mounted () {
+            this.showMyTweets();
+        },
         methods: {
             showMyTweets() {
+                console.log("updating tweets");
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",
                     method : "GET",
@@ -54,8 +60,8 @@ import TweetBody from './TweetBody.vue'
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })
-            }
-        },
+            },
+        }
     }
 </script>
 

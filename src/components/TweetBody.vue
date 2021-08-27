@@ -25,8 +25,8 @@
             <v-list-item-avatar color="grey darken-3">
                 <v-img
                 class="elevation-6"
-                alt=""
-                src="imageUrl"
+                alt="profile picture"
+                :src="imageUrl"
                 ></v-img>
             </v-list-item-avatar>
 
@@ -59,7 +59,7 @@
                             >Apply</v-btn>
                         </v-col>
                         </div>
-                <v-icon class="mr-1">
+                <v-icon @click="deleteTweet" class="mr-1">
                 mdi-comment-remove-outline
                 </v-icon>
             </v-row>
@@ -104,8 +104,29 @@ import cookies from "vue-cookies"
                         "content": this.editedContent
                     }
                 }).then((response) => {
-                    console.log(response); 
+                    console.log(response);
+                    this.$emit('UpdateUserTweets');
 
+                }).catch((error) => {
+                    console.error("There was an error" +error);
+                })
+            },
+            deleteTweet(){
+                axios.request({
+                    url : "https://tweeterest.ml/api/tweets",
+                    method : "Delete",
+                    headers : {
+                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    data: {
+                        "loginToken" : cookies.get('loginToken'),
+                        "tweetId": this.tweetId,
+                    }
+                }).then((response) => {
+                    console.log(response); 
+                    this.$emit('UpdateUserTweets');
+                    
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })
