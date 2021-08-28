@@ -26,7 +26,6 @@
 
 <script>
 import axios from "axios";
-import cookies from "vue-cookies"
 import FeedPostTweet from './FeedPostTweet.vue'
     export default {
         name : 'ProfileTabBar',
@@ -37,6 +36,9 @@ import FeedPostTweet from './FeedPostTweet.vue'
             return {
                 userTweets : []
             }
+        },
+        props: {
+            userId : String,
         },
         mounted () {
             this.showMyTweets();
@@ -52,7 +54,7 @@ import FeedPostTweet from './FeedPostTweet.vue'
                         'Content-Type': 'application/json'
                     },
                     params : {
-                        userId : cookies.get('userId')
+                        userId : this.userId
                     }
                 }).then((response) => {
                     console.log(response); 
