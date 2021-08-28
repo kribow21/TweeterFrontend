@@ -10,7 +10,7 @@ export default new Vuetify({
             light: {
             primary: colors.teal.lighten1, //80CBC4
             secondary: colors.grey.lighten1, // #BDBDBD
-            accent: colors.teal.lighten5, // #E0F2F1
+            accent: colors.purple.lighten1, // #E0F2F1
             },
         },
         },
