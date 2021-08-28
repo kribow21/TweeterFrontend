@@ -5,7 +5,7 @@ import Signup from '../views/Signup.vue'
 import Feed from '../views/Feed.vue'
 import Profile from '../views/Profile.vue'
 import Discover from '../views/Discover.vue'
-import UserProfile from '../views/UserProfile'
+import OthersProfile from '../views/OthersProfile'
 
 
 Vue.use(VueRouter)
@@ -38,8 +38,8 @@ const routes = [
   },
   {
     path: '/user/:userId',
-    name: 'UserProfile',
-    component: UserProfile,
+    name: 'OthersProfile',
+    component: OthersProfile,
   }
 ]
 
