@@ -14,8 +14,10 @@
             </v-tabs>
         </template>
     </v-toolbar>
+<!-- This creates the component FeedPostTweet for each tweet and responds to the emits to update themselves -->
+
     <FeedPostTweet 
-    @UpdateUserTweets="showMyTweets" v-for="tweet in userTweets"
+    @UpdateProfileTweets="showMyTweets" v-for="tweet in userTweets"
     v-bind:key="tweet.tweetId"
     :username="tweet.username"
     :tweetImageUrl="tweet.tweetImageUrl"

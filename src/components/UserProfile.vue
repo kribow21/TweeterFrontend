@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <!-- top part of user profile(everything before tab bar)-->
         <v-row>
             <v-col>
                 <img :src="userPic" alt="profile picture">
