@@ -1,5 +1,6 @@
 <template>
     <v-container>
+        <!-- top part of other user page(before tab bar)-->
         <v-row>
             <v-col>
                 <img :src="userPic" alt="profile picture">
@@ -12,6 +13,7 @@
                 color="accent"
                 elevation="2"
                 raised
+                v-bind:disabled="isFollowDisabled"
             >Follow </v-btn>
             </v-col>
         </v-row>
@@ -28,6 +30,7 @@ import cookies from "vue-cookies"
                 userPic: "",
                 proBio: "",
                 username: "",
+                isFollowDisabled: "",
             }
         },
         mounted () {
@@ -73,6 +76,8 @@ import cookies from "vue-cookies"
                     }
                 }).then((response) => {
                     console.log(response);
+                    this.isFollowDisabled == true;
+
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })

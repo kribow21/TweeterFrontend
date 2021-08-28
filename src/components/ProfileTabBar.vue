@@ -7,7 +7,9 @@
             @click="showMyTweets"
             >Tweets</v-tab>
             <v-tab>Followers</v-tab>
-            <v-tab>Following</v-tab>
+            <v-tab
+            @click="followingTab"
+            >Following</v-tab>
             <v-tab>Likes</v-tab>
             </v-tabs>
         </template>
@@ -21,20 +23,27 @@
     :createdAt="tweet.createdAt"
     :tweetId="tweet.tweetId"
     :imageUrl="tweet.imageUrl"/>
+
+    <ProfileTabFollowing/>
+
     </div>
+
 </template>
 
 <script>
 import axios from "axios";
 import FeedPostTweet from './FeedPostTweet.vue'
+import ProfileTabFollowing from './ProfileTabFollowing.vue'
     export default {
         name : 'ProfileTabBar',
         components: {
             FeedPostTweet,
+            ProfileTabFollowing
         },
         data() {
             return {
-                userTweets : []
+                userTweets : [],
+                userFollowing: []
             }
         },
         props: {
@@ -63,6 +72,24 @@ import FeedPostTweet from './FeedPostTweet.vue'
                     console.error("There was an error" +error);
                 })
             },
+            followingTab(){
+                axios.request({
+                    url : "https://tweeterest.ml/api/follows",
+                    method : "GET",
+                    headers : {
+                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    params : {
+                        userId : this.userId
+                    }
+                }).then((response) => {
+                    console.log(response); 
+                        this.userFollowing = response.data.reverse();
+                }).catch((error) => {
+                    console.error("There was an error" +error);
+                })
+            }
         }
     }
 </script>

@@ -143,7 +143,4 @@ import cookies from "vue-cookies"
 .mx-auto{
     margin-top: 3%;
 }
-.EditForm{
-    display: none;
-}
 </style>

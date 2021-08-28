@@ -7,7 +7,7 @@
         max-width="100%"
         >
         <v-card-title>
-            <v-list-item-avatar>
+            <v-list-item-avatar color="grey darken-3">
                 <img
                 class="elevation-6"
                 alt="user"
@@ -149,7 +149,5 @@ import cookies from "vue-cookies"
 .v-application a{
     color: black;
 }
-#editors{
-    display: none;
-}
+
 </style>
