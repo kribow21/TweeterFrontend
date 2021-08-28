@@ -65,6 +65,9 @@
             </v-row>
             </v-list-item>
         </v-card-actions>
+        <v-card-actions>
+            <p>new</p>
+        </v-card-actions>
     </v-card>
     </div>
 </template>
