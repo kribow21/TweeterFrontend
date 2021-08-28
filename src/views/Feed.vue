@@ -1,15 +1,15 @@
 <template>
     <div>
-        <CreateTweet/>
+        <FeedBody/>
     </div>
 </template>
 
 <script>
-import CreateTweet from '../components/CreateTweet.vue'
+import FeedBody from '../components/FeedBody.vue'
     export default {
         name : 'Feed',
         components: {
-            CreateTweet,
+            FeedBody,
         },
     }
 </script>

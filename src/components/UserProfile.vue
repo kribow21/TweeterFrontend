@@ -58,7 +58,7 @@ import ProfileDeleteComp from './ProfileDeleteComp.vue'
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })
-            },
+            }
             }
         }
 </script>

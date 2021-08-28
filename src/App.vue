@@ -16,10 +16,10 @@
           width="50"
         />
         <router-link to="/">Login</router-link>
-        <router-link to="/Signup">Sign Up</router-link>
-        <router-link to="/Feed">Home Feed</router-link>
-        <router-link to="/Discover">Discover</router-link>
-        <router-link to="/Profile">Profile</router-link>
+        <router-link to="/signup">Sign Up</router-link>
+        <router-link to="/feed">Home Feed</router-link>
+        <router-link to="/discover">Discover</router-link>
+        <router-link to="/profile">Profile</router-link>
 
 
       </div>
