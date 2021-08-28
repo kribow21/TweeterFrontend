@@ -9,12 +9,12 @@
         ></v-textarea>
         <v-btn
             @click="submitTweet"
-            @UpdateFeedTweets="getAllTweets"  
             color="primary"
             elevation="2"
             raised
         >Post</v-btn>
         <FeedPostTweet  
+        @UpdateProfileTweets="getAllTweets"  
             v-for="tweet in feedTweets"
             v-bind:key="tweet.tweetId"
             :username="tweet.username"
