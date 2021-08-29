@@ -34,13 +34,37 @@
             <v-card-text class="text-h5 font-weight-bold">
                 {{content}}
             </v-card-text>
-        <!-- bottom part of card, holds the buttons to edit the tweets-->
-        <v-card-actions id="editors">
+        <!-- bottom part of card, holds the buttons to edit comment/like tweets-->
+        <v-card-actions v-if="1==1">
+<!-- this action will be shown only on your own tweets-->
         <v-list-item class="grow">
             <v-row
                 align="center"
                 justify="end"
             >
+                <!-- form for commenting on tweet-->
+            <v-icon @click="clickToComment" class="mr-1">
+                mdi-comment-text-outline
+                </v-icon>
+                        <div :class="{CommentForm : isComment}">
+                        <v-col
+                            cols="12"
+                            sm="10"
+                        >
+                        <v-text-field
+                            label="comment"
+                            v-model="tweetComment"
+                            outlined
+                        ></v-text-field>
+                        <v-btn
+                            @click="commentTweet"
+                            color="primary"
+                            elevation="2"
+                            raised
+                        >Apply</v-btn>
+                        </v-col>
+                        </div>
+                <!-- form for editing tweet-->
                 <v-icon @click="clickToEdit" class="mr-1">
                 mdi-comment-edit-outline
                 </v-icon>
@@ -60,6 +84,7 @@
                                 elevation="2"
                                 raised
                             >Apply</v-btn>
+                            
                         </v-col>
                         </div>
                 <v-icon @click="deleteTweet" class="mr-1">
@@ -68,8 +93,65 @@
             </v-row>
             </v-list-item>
         </v-card-actions>
+        <!--Like and Comment Buttons Start here-->
+<!-- this action will be shown only on other users tweets-->
+    
         <v-card-actions>
-            <p>new</p>
+        <v-list-item class="grow">
+            <v-row
+                align="center"
+                justify="end"
+            >
+                <!-- form for commenting on tweet-->
+                    <v-btn
+                        @click="clickToComment"
+                        class="ma-2"
+                        outlined
+                        fab
+                        color="white"
+                        >
+                        <v-icon class="mr-1">mdi-comment-text-outline</v-icon>
+                    </v-btn>
+
+                        <div :class="{CommentForm : isComment}">
+                        <v-col
+                            cols="12"
+                            sm="10"
+                        >
+                        <v-text-field
+                            label="comment"
+                            v-model="tweetComment"
+                            outlined
+                        ></v-text-field>
+                        <v-btn
+                            @click="commentTweet"
+                            color="primary"
+                            elevation="2"
+                            raised
+                        >Apply</v-btn>
+                        </v-col>
+                        </div>
+
+                    <v-btn
+                        @click="likeTweet"
+                        class="ma-2"
+                        outlined
+                        fab
+                        color="white"
+                        >
+                        <v-icon class="mr-1">mdi-thumb-up</v-icon>
+                    </v-btn>
+                    <v-btn
+                        @click="unlikeTweet"
+                        class="ma-2"
+                        outlined
+                        fab
+                        color="white"
+                        >
+                        <v-icon class="mr-1">mdi-thumb-down</v-icon>
+                    </v-btn>
+            </v-row>
+            </v-list-item>
         </v-card-actions>
     </v-card>
     </div>
@@ -89,7 +171,15 @@ import cookies from "vue-cookies"
             imageUrl: String,
             userId: Number
         },
-                methods: {
+        data() {
+            return {
+                isForm: true,
+                editedContent: "",
+                isComment: true,
+                tweetComment: ""
+            }
+        },
+        methods: {
                     //shows input so the user can change tweets content//
             clickToEdit(){
                 if (this.isForm == true){
@@ -140,12 +230,40 @@ import cookies from "vue-cookies"
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })
-            }
-        },
-        data() {
-            return {
-                isForm: true,
-                editedContent: "",
+            },
+            likeTweet(){
+                console.log("clicked");
+            },
+            unlikeTweet(){
+                console.log("unclicked");
+            },
+            clickToComment(){
+                if (this.isComment == true){
+                    this.isComment = false
+                }else if(this.isComment == false){
+                    this.isComment = true
+                }
+            },
+            commentTweet(){
+                axios.request({
+                    url : "https://tweeterest.ml/api/comments",
+                    method : "POST",
+                    headers : {
+                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    data: {
+                        "loginToken" : cookies.get('loginToken'),
+                        "tweetId": this.tweetId,
+                        "content": this.tweetComment
+                    }
+                }).then((response) => {
+                    console.log(response);
+                    this.$emit('UpdateProfileTweets');
+
+                }).catch((error) => {
+                    console.error("There was an error" +error);
+                })
             }
         }
     }
@@ -153,6 +271,9 @@ import cookies from "vue-cookies"
 
 <style scoped>
 .EditForm{
+    display: none;
+}
+.CommentForm{
     display: none;
 }
 .v-application a{

@@ -78,7 +78,7 @@
                     mdi-lock-check-outline
                     </v-icon>
                 </v-btn>
-                <p id="confirmResponse"></p>
+                <p id="confirmResponse">Change Confirmed</p>
                 </v-col>
             </v-row>
             </v-container>

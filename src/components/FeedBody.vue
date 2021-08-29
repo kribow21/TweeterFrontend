@@ -41,7 +41,7 @@ import FeedPostTweet from './FeedPostTweet.vue';
         data() {
             return {
                 tweetInput: "",
-                feedTweets:[]
+                feedTweets:[],
             }
         },
         //passes tweet input to api //
