@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- Basically the feed page container , has the input to make a tweet and renders the tweets on the feed-->
         <v-textarea
             outlined
             clearable
@@ -43,6 +44,7 @@ import FeedPostTweet from './FeedPostTweet.vue';
                 feedTweets:[]
             }
         },
+        //passes tweet input to api //
         methods: {
             submitTweet() {
                 axios.request({
@@ -64,6 +66,7 @@ import FeedPostTweet from './FeedPostTweet.vue';
 
                 })
             },
+            //makes the call to get all the tweets and fires when a tweet is edited or deleted//
             getAllTweets() {
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",

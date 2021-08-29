@@ -14,7 +14,7 @@
             </v-tabs>
         </template>
     </v-toolbar>
-<!-- This creates the component FeedPostTweet for each tweet and responds to the emits to update themselves -->
+<!-- This creates the component FeedPostTweet for each tweet and responds to the emits to update themselves on the profile-->
 
     <FeedPostTweet 
     @UpdateProfileTweets="showMyTweets" v-for="tweet in userTweets"
@@ -54,6 +54,7 @@ import ProfileTabFollowing from './ProfileTabFollowing.vue'
         mounted () {
             this.showMyTweets();
         },
+        //whatever user is signed in will call for all their tweets when they enter the profile page//
         methods: {
             showMyTweets() {
                 console.log("updating tweets");

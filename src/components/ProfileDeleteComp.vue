@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- delete profile method toggles the password input thats needed for the api call to confirm their request is authorized-->
         <v-btn
             @click="deleteProfile"
             color="primary"

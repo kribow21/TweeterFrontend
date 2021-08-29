@@ -1,5 +1,6 @@
 <template>
     <v-form>
+        <!-- signup form-->
     <v-container>
         <v-row>
         <v-col
@@ -64,6 +65,7 @@ import cookies from "vue-cookies"
     export default {
         name : 'SignupInput',
         data() {
+            //input that corresponds with v-model value gets stored here then passed to signup api call//
             return {
                 userEmail : "",
                 userUsername : "",
@@ -95,6 +97,7 @@ import cookies from "vue-cookies"
                     console.log(response);
                     cookies.set('loginToken', response.data.loginToken)
                     cookies.set('userId', response.data.userId);
+                    this.$router.push('Profile');
                     }).catch((error) => {
                     console.error("There was an error" +error);
                     console.log(this.email)

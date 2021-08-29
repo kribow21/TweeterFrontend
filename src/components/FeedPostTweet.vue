@@ -1,5 +1,7 @@
 <template>
     <div>
+        <!-- responsible for all individual tweet components on website. Feedbody passes the input to this component-->
+
         <v-card
         class="mx-auto"
         color="primary"
@@ -14,6 +16,7 @@
                 src="imageUrl"
                 >
             </v-list-item-avatar>
+        <!-- dynamic route for other users profile viewing-->
 
             <v-list-item-content>
                 <v-list-item-title color="secondary">
@@ -31,7 +34,7 @@
             <v-card-text class="text-h5 font-weight-bold">
                 {{content}}
             </v-card-text>
-
+        <!-- bottom part of card, holds the buttons to edit the tweets-->
         <v-card-actions id="editors">
         <v-list-item class="grow">
             <v-row
@@ -87,6 +90,7 @@ import cookies from "vue-cookies"
             userId: Number
         },
                 methods: {
+                    //shows input so the user can change tweets content//
             clickToEdit(){
                 if (this.isForm == true){
                     this.isForm = false
@@ -94,6 +98,7 @@ import cookies from "vue-cookies"
                     this.isForm = true
                 }
             },
+            //emits to FeedBody that it needs to edit itself with the changes made
             editTweet() {
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",
@@ -115,6 +120,7 @@ import cookies from "vue-cookies"
                     console.error("There was an error" +error);
                 })
             },
+            //emits to FeedBody that it needs to edit itself with the changes made
             deleteTweet(){
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",

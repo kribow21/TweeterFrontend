@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- the edit profile method toggles the editing form so the user can input what they want to change-->
             <v-btn
             @click="editProfile"
             class="ma-2"
@@ -66,6 +67,7 @@
                     v-model="birthday"
                     outlined
                 ></v-text-field>
+        <!-- confirms changes with a message to let the user know it was sucessful-->
                 <v-btn
                     @click="postEditRequest"
                     class="ma-2"
