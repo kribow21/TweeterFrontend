@@ -9,12 +9,19 @@
                 <h3>{{username}}</h3>
                 <p>{{proBio}}</p>
             <v-btn
-                @click="followOtherUser"
+                v-if="state === 'follow'"
+                @click="followOtherUser; changeState('unfollow')"
                 color="accent"
                 elevation="2"
                 raised
-                v-bind:disabled="isFollowDisabled"
             >Follow </v-btn>
+            <v-btn
+                v-else
+                @click="unfollowOtherUser; changeState('follow')"
+                color="accent"
+                elevation="2"
+                raised
+            >Unfollow </v-btn>
             </v-col>
         </v-row>
     </v-container>
@@ -22,15 +29,15 @@
 
 <script>
 import axios from "axios";
-import cookies from "vue-cookies"
+// import cookies from "vue-cookies"
     export default {
         name : 'OtherUserProfile',
         data() {
             return {
+                state: 'follow',
                 userPic: "",
                 proBio: "",
                 username: "",
-                isFollowDisabled: "",
             }
         },
         mounted () {
@@ -40,6 +47,9 @@ import cookies from "vue-cookies"
             userId : String,
         },
         methods: {
+            changeState(newState){
+                this.state = newState;
+            },
             getProfile() {
                     axios.request({
                     url : "https://tweeterest.ml/api/users",
@@ -63,24 +73,44 @@ import cookies from "vue-cookies"
                 })
             },
         followOtherUser(){
-            axios.request({
-                    url : "https://tweeterest.ml/api/follows",
-                    method : "POST",
-                    headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
-                        'Content-Type': 'application/json'
-                    },
-                    data : {
-                        "loginToken": cookies.get('loginToken'),
-                        "followId" : this.userId
-                    }
-                }).then((response) => {
-                    console.log(response);
-                    this.isFollowDisabled == true;
+            console.log("follow");
+            // axios.request({
+            //         url : "https://tweeterest.ml/api/follows",
+            //         method : "POST",
+            //         headers : {
+            //             'X-Api-Key' : process.env.VUE_APP_API_KEY,
+            //             'Content-Type': 'application/json'
+            //         },
+            //         data : {
+            //             "loginToken": cookies.get('loginToken'),
+            //             "followId" : this.userId
+            //         }
+            //     }).then((response) => {
+            //         console.log(response);
 
-                }).catch((error) => {
-                    console.error("There was an error" +error);
-                })
+            //     }).catch((error) => {
+            //         console.error("There was an error" +error);
+            //     })
+        },
+        unfollowOtherUser(){
+            console.log("unfollow");
+                // axios.request({
+                //     url : "https://tweeterest.ml/api/follows",
+                //     method : "DELETE",
+                //     headers : {
+                //         'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                //         'Content-Type': 'application/json'
+                //     },
+                //     data : {
+                //         "loginToken": cookies.get('loginToken'),
+                //         "followId" : this.userId
+                //     }
+                // }).then((response) => {
+                //     console.log(response);
+
+                // }).catch((error) => {
+                //     console.error("There was an error" +error);
+                // })
         }
         }
     }
