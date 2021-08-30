@@ -35,7 +35,7 @@
                 {{content}}
             </v-card-text>
         <!-- bottom part of card, holds the buttons to edit comment/like tweets-->
-        <v-card-actions v-if="1==1">
+        <v-card-actions>
 <!-- this action will be shown only on your own tweets-->
         <v-list-item class="grow">
             <v-row
@@ -156,6 +156,103 @@
             </v-row>
             </v-list-item>
         </v-card-actions>
+                <!-- block of code that holds comment content and who created the comment-->
+                <v-list-item-content>
+                    <span class="text-h6 font-weight-light">Comments</span>
+                    <router-link :to="'user/'+ userId ">commenters username</router-link>
+                    <v-card-text class="text-h6 font-weight-bold">
+                    Tweets comment goes here
+                    </v-card-text>
+                                <v-card-actions>
+<!-- this action will be shown only on your own comments-->
+        <v-list-item class="grow">
+            <v-row
+                align="center"
+                justify="end"
+            >
+                <!-- form for commenting on tweet-->
+            <v-icon @click="clickToComment" class="mr-1">
+                mdi-comment-text-outline
+                </v-icon>
+                        <div :class="{CommentForm : isComment}">
+                        <v-col
+                            cols="12"
+                            sm="10"
+                        >
+                        <v-text-field
+                            label="comment"
+                            v-model="tweetComment"
+                            outlined
+                        ></v-text-field>
+                        <v-btn
+                            @click="commentTweet"
+                            color="primary"
+                            elevation="2"
+                            raised
+                        >Apply</v-btn>
+                        </v-col>
+                        </div>
+                <!-- form for editing comment-->
+                <v-icon @click="clickToEdit" class="mr-1">
+                mdi-comment-edit-outline
+                </v-icon>
+                        <div :class="{EditForm : isForm}">
+                        <v-col
+                            cols="12"
+                            sm="10"
+                        >
+                        <v-text-field
+                            label="edited comment"
+                            v-model="editedContent"
+                            outlined
+                        ></v-text-field>
+                        <v-btn
+                                color="primary"
+                                elevation="2"
+                                raised
+                            >Apply</v-btn>
+                            
+                        </v-col>
+                        </div>
+                <v-icon class="mr-1">
+                mdi-comment-remove-outline
+                </v-icon>
+            </v-row>
+            </v-list-item>
+        </v-card-actions>
+        <!--comment like buttons start here-->
+<!-- this action will be shown only on other users comments-->
+    
+        <v-card-actions>
+        <v-list-item class="grow">
+            <v-row
+                align="center"
+                justify="end"
+            >
+                    <v-btn
+                        @click="likeTweet"
+                        class="ma-2"
+                        small
+                        outlined
+                        fab
+                        color="white"
+                        >
+                        <v-icon class="mr-1">mdi-thumb-up</v-icon>
+                    </v-btn>
+                    <v-btn
+                        @click="dislikeTweet"
+                        class="ma-2"
+                        small
+                        outlined
+                        fab
+                        color="white"
+                        >
+                        <v-icon class="mr-1">mdi-thumb-down</v-icon>
+                    </v-btn>
+            </v-row>
+            </v-list-item>
+        </v-card-actions>
+                </v-list-item-content>
     </v-card>
     </div>
 </template>
@@ -181,6 +278,7 @@ import cookies from "vue-cookies"
                 editedContent: "",
                 isComment: true,
                 tweetComment: "",
+                authorizer: "cookies.get('userId"
             }
         },
         methods: {
@@ -268,7 +366,8 @@ import cookies from "vue-cookies"
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })
-            }
+            },
+
         }
     }
 </script>
