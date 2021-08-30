@@ -25,11 +25,6 @@
       </div>
 
       <v-spacer></v-spacer>
-            <v-btn
-            color="primary"
-            elevation="2"
-            raised
-            >Log Out</v-btn>
 
     </v-app-bar>
   
