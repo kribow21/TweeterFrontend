@@ -21,7 +21,7 @@
                 color="accent"
                 elevation="2"
                 raised
-            >Unfollow </v-btn>
+            >Unfollow something</v-btn>
             </v-col>
         </v-row>
     </v-container>
