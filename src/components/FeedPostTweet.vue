@@ -19,7 +19,7 @@
         <!-- dynamic route for other users profile viewing-->
 
             <v-list-item-content>
-                <v-list-item-title color="secondary">
+                <v-list-item-title>
                     <router-link :to="'user/'+ userId ">{{username}}</router-link>
                 </v-list-item-title>
             </v-list-item-content>
@@ -106,6 +106,7 @@
                     <v-btn
                         @click="clickToComment"
                         class="ma-2"
+                        small
                         outlined
                         fab
                         color="white"
@@ -135,6 +136,7 @@
                     <v-btn
                         @click="likeTweet"
                         class="ma-2"
+                        small
                         outlined
                         fab
                         color="white"
@@ -142,8 +144,9 @@
                         <v-icon class="mr-1">mdi-thumb-up</v-icon>
                     </v-btn>
                     <v-btn
-                        @click="unlikeTweet"
+                        @click="dislikeTweet"
                         class="ma-2"
+                        small
                         outlined
                         fab
                         color="white"
@@ -163,20 +166,21 @@ import cookies from "vue-cookies"
     export default {
         name : 'FeedPostTweet',
         props : {
+            //tweet response from feedbody//
             username : String,
             tweetImageUrl: String,
             content : String,
             createdAt: String,
             tweetId: Number,
             imageUrl: String,
-            userId: Number
+            userId: Number,
         },
         data() {
             return {
                 isForm: true,
                 editedContent: "",
                 isComment: true,
-                tweetComment: ""
+                tweetComment: "",
             }
         },
         methods: {
@@ -234,7 +238,7 @@ import cookies from "vue-cookies"
             likeTweet(){
                 console.log("clicked");
             },
-            unlikeTweet(){
+            dislikeTweet(){
                 console.log("unclicked");
             },
             clickToComment(){
@@ -277,7 +281,7 @@ import cookies from "vue-cookies"
     display: none;
 }
 .v-application a{
-    color: black;
+    color: white;
 }
 
 </style>
