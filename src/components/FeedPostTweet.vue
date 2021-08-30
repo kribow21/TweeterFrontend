@@ -185,7 +185,7 @@
                             outlined
                         ></v-text-field>
                         <v-btn
-                            @click="commentTweet"
+                            @click="commentTweet(); getComments()"
                             color="primary"
                             elevation="2"
                             raised
@@ -193,17 +193,17 @@
                         </v-col>
                         </div>
                 <!-- form for editing comment-->
-                <v-icon @click="clickToEdit" class="mr-1">
+                <v-icon class="mr-1">
                 mdi-comment-edit-outline
                 </v-icon>
-                        <div :class="{EditForm : isForm}">
+                        <div :class="{EditCommentForm : isForm}">
                         <v-col
                             cols="12"
                             sm="10"
                         >
                         <v-text-field
                             label="edited comment"
-                            v-model="editedContent"
+                            v-model="yourEditedComment"
                             outlined
                         ></v-text-field>
                         <v-btn
@@ -278,7 +278,7 @@ import cookies from "vue-cookies"
                 editedContent: "",
                 isComment: true,
                 tweetComment: "",
-                authorizer: "cookies.get('userId"
+                yourEditedComment: ""
             }
         },
         methods: {
@@ -367,7 +367,25 @@ import cookies from "vue-cookies"
                     console.error("There was an error" +error);
                 })
             },
+            getComments(){
+                axios.request({
+                    url : "https://tweeterest.ml/api/comments",
+                    method : "GET",
+                    headers : {
+                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    data: {
+                        "tweetId": this.tweetId
+                    }
+                }).then((response) => {
+                    console.log(response);
+                    this.feedComments = response.data.reverse();
 
+                }).catch((error) => {
+                    console.error("There was an error" +error);
+                })
+            }
         }
     }
 </script>
@@ -377,6 +395,9 @@ import cookies from "vue-cookies"
     display: none;
 }
 .CommentForm{
+    display: none;
+}
+.EditCommentForm{
     display: none;
 }
 .v-application a{

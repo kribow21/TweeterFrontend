@@ -15,7 +15,7 @@
             raised
         >Post</v-btn>
         <FeedPostTweet  
-        @UpdateProfileTweets="getAllTweets; getAllComments"  
+        @UpdateProfileTweets="getAllTweets"  
             v-for="tweet in feedTweets"
             v-bind:key="tweet.tweetId"
             :username="tweet.username"
@@ -42,7 +42,6 @@ import FeedPostTweet from './FeedPostTweet.vue';
             return {
                 tweetInput: "",
                 feedTweets:[],
-                feedComments:[]
             }
         },
         //passes tweet input to api //
@@ -84,24 +83,6 @@ import FeedPostTweet from './FeedPostTweet.vue';
                     console.error("There was an error" +error);
                 })
             },
-            //makes the call to get all the comments and stores the object response in feedComments//
-            getAllComments(){
-                
-                // axios.request({
-                //     url : "https://tweeterest.ml/api/comments",
-                //     method : "GET",
-                //     headers : {
-                //         'X-Api-Key' : process.env.VUE_APP_API_KEY,
-                //         'Content-Type': 'application/json'
-                //     }
-                // }).then((response) => {
-                //     console.log(response);
-                //     this.feedComments = response.data.reverse();
-
-                // }).catch((error) => {
-                //     console.error("There was an error" +error);
-                // })
-            }
         },
         mounted () {
             this.getAllTweets();
