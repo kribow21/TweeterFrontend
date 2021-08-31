@@ -14,7 +14,7 @@
             elevation="2"
             raised
         >Post</v-btn>
-        <FeedPostTweet  
+        <PostTweet  
         @UpdateProfileTweets="getAllTweets"  
             v-for="tweet in feedTweets"
             v-bind:key="tweet.tweetId"
@@ -31,11 +31,11 @@
 <script>
 import axios from "axios";
 import cookies from "vue-cookies"
-import FeedPostTweet from './FeedPostTweet.vue';
+import PostTweet from './PostTweet.vue';
     export default {
         name : 'FeedBody',
         components: { 
-            FeedPostTweet
+            PostTweet
             },
 
         data() {

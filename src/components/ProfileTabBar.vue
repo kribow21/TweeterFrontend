@@ -16,7 +16,7 @@
     </v-toolbar>
 <!-- This creates the component FeedPostTweet for each tweet and responds to the emits to update themselves on the profile-->
 
-    <FeedPostTweet 
+    <PostTweet 
     @UpdateProfileTweets="showMyTweets" v-for="tweet in userTweets"
     v-bind:key="tweet.tweetId"
     :username="tweet.username"
@@ -34,12 +34,12 @@
 
 <script>
 import axios from "axios";
-import FeedPostTweet from './FeedPostTweet.vue'
+import PostTweet from './PostTweet.vue'
 import ProfileTabFollowing from './ProfileTabFollowing.vue'
     export default {
         name : 'ProfileTabBar',
         components: {
-            FeedPostTweet,
+            PostTweet,
             ProfileTabFollowing
         },
         data() {
