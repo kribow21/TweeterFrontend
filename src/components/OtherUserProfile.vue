@@ -9,15 +9,15 @@
                 <h3>{{username}}</h3>
                 <p>{{proBio}}</p>
             <v-btn
-                v-if="state === 'follow'"
-                @click="followOtherUser(); changeState('unfollow')"
+                v-if="state == 'following'"
+                @click="followButtonClick"
                 color="accent"
                 elevation="2"
                 raised
-            >Follow </v-btn>
+            >Follow Me</v-btn>
             <v-btn
-                v-else
-                @click="unfollowOtherUser(); changeState('follow')"
+            v-else
+                @click="followButtonClick"
                 color="accent"
                 elevation="2"
                 raised
@@ -34,7 +34,7 @@ import cookies from "vue-cookies"
         name : 'OtherUserProfile',
         data() {
             return {
-                state: 'follow',
+                state: 'following',
                 userPic: "",
                 proBio: "",
                 username: "",
@@ -73,46 +73,47 @@ import cookies from "vue-cookies"
                     console.error("There was an error" +error);
                 })
             },
-        followOtherUser(){
-            console.log("follow");
-            axios.request({
-                    url : "https://tweeterest.ml/api/follows",
-                    method : "POST",
-                    headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
-                        'Content-Type': 'application/json'
-                    },
-                    data : {
-                        "loginToken": cookies.get('loginToken'),
-                        "followId" : this.userId
-                    }
-                }).then((response) => {
-                    console.log(response);
+            followButtonClick(){
+                if(this.state == 'following'){
+                    axios.request({
+                        url : "https://tweeterest.ml/api/follows",
+                        method : "POST",
+                        headers : {
+                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                            'Content-Type': 'application/json'
+                        },
+                        data : {
+                            "loginToken": cookies.get('loginToken'),
+                            "followId" : this.userId
+                        }
+                    }).then((response) => {
+                        console.log(response);
+                        this.changeState('unfollow');
 
-                }).catch((error) => {
-                    console.error("There was an error" +error);
+                    }).catch((error) => {
+                        console.error("There was an error" +error);
                 })
-        },
-        unfollowOtherUser(){
-            console.log("unfollow");
-                axios.request({
-                    url : "https://tweeterest.ml/api/follows",
-                    method : "DELETE",
-                    headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
-                        'Content-Type': 'application/json'
-                    },
-                    data : {
-                        "loginToken": cookies.get('loginToken'),
-                        "followId" : this.userId
-                    }
-                }).then((response) => {
-                    console.log(response);
+                }else if (this.state == 'unfollow'){
+                    axios.request({
+                        url : "https://tweeterest.ml/api/follows",
+                        method : "DELETE",
+                        headers : {
+                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                            'Content-Type': 'application/json'
+                        },
+                        data : {
+                            "loginToken": cookies.get('loginToken'),
+                            "followId" : this.userId
+                        }
+                    }).then((response) => {
+                        console.log(response);
+                        this.changeState('following');
 
-                }).catch((error) => {
-                    console.error("There was an error" +error);
-                })
-        }
+                    }).catch((error) => {
+                        console.error("There was an error" +error);
+                    })
+                }
+            }
         }
     }
 </script>
