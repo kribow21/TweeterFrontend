@@ -9,7 +9,7 @@
             v-model="tweetInput"
         ></v-textarea>
         <v-btn
-            @click="submitTweet(); getAllTweets()"
+            @click="submitTweet()"
             color="primary"
             elevation="2"
             raised
@@ -60,6 +60,7 @@ import PostTweet from './PostTweet.vue';
                     }
                 }).then((response) => {
                     console.log(response);
+                    this.getAllTweets()
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
