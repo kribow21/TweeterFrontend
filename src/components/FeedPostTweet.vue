@@ -185,11 +185,17 @@
                             outlined
                         ></v-text-field>
                         <v-btn
-                            @click="commentTweet(); getComments()"
+                            @click="commentTweet"
                             color="primary"
                             elevation="2"
                             raised
                         >Apply</v-btn>
+                        <v-btn
+                            @click="getComments"
+                            color="primary"
+                            elevation="2"
+                            raised
+                        >Get Comments</v-btn>
                         </v-col>
                         </div>
                 <!-- form for editing comment-->
@@ -278,7 +284,8 @@ import cookies from "vue-cookies"
                 editedContent: "",
                 isComment: true,
                 tweetComment: "",
-                yourEditedComment: ""
+                yourEditedComment: "",
+                tweetComments:[]
             }
         },
         methods: {
@@ -375,15 +382,16 @@ import cookies from "vue-cookies"
                         'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
-                    data: {
+                    params: {
                         "tweetId": this.tweetId
                     }
                 }).then((response) => {
                     console.log(response);
-                    this.feedComments = response.data.reverse();
+                    this.tweetComments = response.data;
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
+                    console.log(error.response);
                 })
             }
         }
