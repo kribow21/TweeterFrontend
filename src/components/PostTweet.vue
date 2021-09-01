@@ -13,7 +13,7 @@
                 <img
                 class="elevation-6"
                 alt="user"
-                src="imageUrl"
+                :src="imageUrl"
                 >
             </v-list-item-avatar>
         <!-- dynamic route for other users profile viewing-->
@@ -71,7 +71,7 @@
                 mdi-comment-remove-outline
                 </v-icon>
                         <v-icon 
-                            v-if="likeState == 'unliked'"
+                            v-if="isLike == false"
                             @click="likeButtonClick"
                             color="accent">
                             mdi-emoticon-happy-outline
@@ -84,7 +84,7 @@
                         </v-icon>
                         <v-badge
                             color="accent"
-                            content=tweetLikes
+                            :content="tweetLikeCount"
                             >
                         </v-badge>
             </v-row>
@@ -93,7 +93,7 @@
                 <!-- actions shown on tweets that are NOT the user logged in-(authenticated)-->
         <v-card-actions v-else>
                         <v-icon 
-                            v-if="likeState == 'unliked'"
+                            v-if="isLike == false"
                             @click="likeButtonClick"
                             color="accent">
                             mdi-emoticon-happy-outline
@@ -106,12 +106,21 @@
                         </v-icon>
                         <v-badge
                             color="accent"
-                            content=this.tweetLikes
+                            :content="tweetLikeCount"
                             >
                         </v-badge>
         </v-card-actions>
     </v-card>
-    <PostTweetComment/>
+    <PostTweetComment
+    v-for="comment in tweetComments"
+    v-bind:key="comment.commentId"
+    :commentId="comment.commentId"
+    :content="comment.content"
+    :createdAt="comment.createdAt"
+    :tweetId="comment.tweetId"
+    :userId="comment.userId"
+    :username="comment.username"
+    />
     </div>
 </template>
 
@@ -135,7 +144,7 @@ import PostTweetComment from './PostTweetComment.vue';
             userId: Number,
         },
         mounted () {
-            // this.getComments();
+            this.getComments();
             this.getTweetLikes();
         },
         data() {
@@ -144,8 +153,9 @@ import PostTweetComment from './PostTweetComment.vue';
                 editedContent: "",
                 authenticated : cookies.get('userId'),
                 tweetComments: [],
-                likeState: 'unliked',
-                tweetLikes: ""
+                isLike: false,
+                tweetLikeCount: "",
+                likingUsers: []
             }
         },
         methods: {
@@ -157,12 +167,9 @@ import PostTweetComment from './PostTweetComment.vue';
                     this.isForm = true
                 }
             },
-    // for changing the state of the like button//
-            changeLikeState(newLikeState){
-                this.likeState = newLikeState
-            },
             likeButtonClick(){
-                if(this.likeState == 'unliked'){
+                if(this.isLike == false){
+                    console.log('false');
                     axios.request({
                         url : "https://tweeterest.ml/api/tweet-likes",
                         method : "POST",
@@ -176,12 +183,13 @@ import PostTweetComment from './PostTweetComment.vue';
                         }
                     }).then((response) => {
                         console.log(response);
-                        this.changeLikeState('liked');
+                        this.getTweetLikes();
 
                     }).catch((error) => {
                         console.error("There was an error" +error);
                 })
-                }else if(this.likeState == 'liked'){
+                }else if(this.isLike == true){
+                    console.log('true');
                     axios.request({
                         url : "https://tweeterest.ml/api/tweet-likes",
                         method : "DELETE",
@@ -195,7 +203,7 @@ import PostTweetComment from './PostTweetComment.vue';
                         }
                     }).then((response) => {
                         console.log(response);
-                        this.changeLikeState('unliked');
+                        this.getTweetLikes();
 
                     }).catch((error) => {
                         console.error("There was an error" +error);
@@ -215,12 +223,27 @@ import PostTweetComment from './PostTweetComment.vue';
                         }
                     }).then((response) => {
                         // console.log(response);
-                        this.tweetLikes = response.data.length
-                        // console.log(this.tweetLikes);
+                        this.tweetLikeCount = response.data.length
+                        this.likingUsers = response.data
+                        let filteredUser = this.likingUsers.filter(this.isLikedByUser)
+                        console.log(filteredUser);
+                        if(filteredUser.length == 0){
+                            this.isLike = false
+                        }else{
+                            this.isLike = true
+                        }
 
                     }).catch((error) => {
                         console.error("There was an error" +error);
                 })
+            },
+        //filtering the recieved object from above(likingUsers) to determine which like button should be rendered//
+            isLikedByUser(user){
+                if(this.authenticated == user.userId){
+                    return true
+                }else if(this.authenticated != user.userId){
+                    return false
+                }
             },
             //emits to FeedBody that it needs to edit itself with the changes made
             editTweet() {
@@ -277,7 +300,7 @@ import PostTweetComment from './PostTweetComment.vue';
                         "tweetId": this.tweetId
                     }
                 }).then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     this.tweetComments = response.data;
 
                 }).catch((error) => {
