@@ -9,14 +9,14 @@
                 <h3>{{username}}</h3>
                 <p>{{proBio}}</p>
             <v-btn
-                v-if="state == 'following'"
+                v-if="isFollowing == false"
                 @click="followButtonClick"
                 color="accent"
                 elevation="2"
                 raised
             >Follow Me</v-btn>
             <v-btn
-            v-else
+                v-else
                 @click="followButtonClick"
                 color="accent"
                 elevation="2"
@@ -34,24 +34,22 @@ import cookies from "vue-cookies"
         name : 'OtherUserProfile',
         data() {
             return {
-                state: 'following',
+                isFollowing: false,
                 userPic: "",
                 proBio: "",
                 username: "",
-                followedUsers: []
+                followedUsers: [],
+                authenticated : cookies.get('userId'),
             }
         },
         mounted () {
             this.getProfile();
-            // this.getFollowers();
+            this.getFollows();
         },
         props: {
             userId : String,
         },
         methods: {
-            changeState(newState){
-                this.state = newState;
-            },
             getProfile() {
                     axios.request({
                     url : "https://tweeterest.ml/api/users",
@@ -64,18 +62,16 @@ import cookies from "vue-cookies"
                         userId : this.userId
                     }
                 }).then((response) => {
-                    console.log(response);
                     this.userPic = response.data[0].imageUrl;
                     this.username = response.data[0].username;
                     this.proBio = response.data[0].bio;
                     
-
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })
             },
             followButtonClick(){
-                if(this.state == 'following'){
+                if(this.isFollowing == false){
                     axios.request({
                         url : "https://tweeterest.ml/api/follows",
                         method : "POST",
@@ -89,12 +85,12 @@ import cookies from "vue-cookies"
                         }
                     }).then((response) => {
                         console.log(response);
-                        this.changeState('unfollow');
+                        this.getFollows();
 
                     }).catch((error) => {
                         console.error("There was an error" +error);
                 })
-                }else if (this.state == 'unfollow'){
+                }else if (this.isFollowing == true){
                     axios.request({
                         url : "https://tweeterest.ml/api/follows",
                         method : "DELETE",
@@ -108,31 +104,43 @@ import cookies from "vue-cookies"
                         }
                     }).then((response) => {
                         console.log(response);
-                        this.changeState('following');
+                        this.getFollows();
 
                     }).catch((error) => {
                         console.error("There was an error" +error);
                     })
                 }
             },
-            getFollowers(){
+            getFollows(){
                     axios.request({
-                        url : "https://tweeterest.ml/api/followers",
+                        url : "https://tweeterest.ml/api/follows",
                         method : "GET",
                         headers : {
                             'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         params : {
-                            "followId" : this.userId
+                            "userId" : this.authenticated
                         }
                     }).then((response) => {
-                        console.log(response);
                         this.followedUsers = response.data
+                        let filteredFollower = this.followedUsers.filter(this.isFollowedByUser)
+                        if(filteredFollower.length == 0){
+                            this.isFollowing = false
+                        }else{
+                            this.isFollowing = true
+                        }
 
                     }).catch((error) => {
                         console.error("There was an error" +error);
                     })
+            },
+            isFollowedByUser(user){
+                if(user.userId == this.userId){
+                    return true
+                }else{
+                    return false
+                }
             }
         }
     }
