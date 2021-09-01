@@ -4,7 +4,6 @@ import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import Feed from '../views/Feed.vue'
 import Profile from '../views/Profile.vue'
-import Discover from '../views/Discover.vue'
 import OthersProfile from '../views/OthersProfile'
 
 
@@ -30,11 +29,6 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile,
-  },
-  {
-    path: '/discover',
-    name: 'Discover',
-    component: Discover,
   },
   {
     path: '/user/:userId',
