@@ -15,7 +15,7 @@
             raised
         >Post</v-btn>
         <PostTweet  
-        @UpdateProfileTweets="getAllTweets"  
+        @UpdateFeedTweets="getAllTweets"  
             v-for="tweet in feedTweets"
             v-bind:key="tweet.tweetId"
             :username="tweet.username"

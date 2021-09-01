@@ -171,6 +171,7 @@
         </v-card-actions>
     </v-card>
     <PostTweetComment
+    @updatePostTweet="getComments"
     v-for="comment in tweetComments"
     v-bind:key="comment.commentId"
     :commentId="comment.commentId"
@@ -329,7 +330,7 @@ import PostTweetComment from './PostTweetComment.vue';
                     }
                 }).then((response) => {
                     console.log(response);
-                    this.$emit('UpdateProfileTweets');
+                    this.$emit('UpdateFeedTweets');
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
@@ -350,7 +351,7 @@ import PostTweetComment from './PostTweetComment.vue';
                     }
                 }).then((response) => {
                     console.log(response); 
-                    this.$emit('UpdateProfileTweets');
+                    this.$emit('UpdateFeedTweets');
                     
                 }).catch((error) => {
                     console.error("There was an error" +error);
