@@ -38,11 +38,12 @@ import cookies from "vue-cookies"
                 userPic: "",
                 proBio: "",
                 username: "",
-                toggle_one: 0
+                followedUsers: []
             }
         },
         mounted () {
             this.getProfile();
+            // this.getFollowers();
         },
         props: {
             userId : String,
@@ -113,6 +114,25 @@ import cookies from "vue-cookies"
                         console.error("There was an error" +error);
                     })
                 }
+            },
+            getFollowers(){
+                    axios.request({
+                        url : "https://tweeterest.ml/api/followers",
+                        method : "GET",
+                        headers : {
+                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                            'Content-Type': 'application/json'
+                        },
+                        params : {
+                            "followId" : this.userId
+                        }
+                    }).then((response) => {
+                        console.log(response);
+                        this.followedUsers = response.data
+
+                    }).catch((error) => {
+                        console.error("There was an error" +error);
+                    })
             }
         }
     }
