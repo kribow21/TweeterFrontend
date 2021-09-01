@@ -8,20 +8,6 @@
                         </v-icon>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-                        <v-textarea
-                            outlined
-                            clearable
-                            name="input-7-4"
-                            label="Create A Comment"
-                            v-model="commentInput"
-                        ></v-textarea>
-                        <v-btn
-                            color="primary"
-                            elevation="2"
-                            raised
-                        >Post</v-btn>
-            </v-expansion-panel-content>
-            <v-expansion-panel-content>
                 <h4>{{username}}</h4>
                 <h6>{{createdAt}}</h6>
                 <p>{{content}}</p>
@@ -40,8 +26,6 @@
 </template>
 
 <script>
-import axios from "axios";
-import cookies from "vue-cookies"
     export default {
         name : 'PostTweetComment',
         props: {
@@ -51,36 +35,7 @@ import cookies from "vue-cookies"
             tweetId: Number,
             userId: Number,
             username: String
-        },
-        data() {
-            return {
-                commentInput: ""
-            }
-        },
-        methods: {
-            postComment() {
-                axios.request({
-                    url : "https://tweeterest.ml/api/comments",
-                    method : "POST",
-                    headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
-                        'Content-Type': 'application/json'
-                    },
-                    data: {
-                        "loginToken": cookies.get('loginToken'),
-                        "tweetId": this.tweetId,
-                        "content": this.commentInput
-                    }
-                }).then((response) => {
-                    console.log(response);
-                    this.tweetComments = response.data;
-
-                }).catch((error) => {
-                    console.error("There was an error" +error);
-                    console.log(error.response);
-                })
-            }
-        },
+        }
     }
 </script>
 

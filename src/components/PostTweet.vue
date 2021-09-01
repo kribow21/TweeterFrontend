@@ -13,7 +13,7 @@
                 <img
                 class="elevation-6"
                 alt="user"
-                :src="imageUrl"
+                src="userImageUrl"
                 >
             </v-list-item-avatar>
         <!-- dynamic route for other users profile viewing-->
@@ -70,6 +70,35 @@
                 color="accent">
                 mdi-comment-remove-outline
                 </v-icon>
+                <v-icon class="mr-1"
+                @click="clickToComment"
+                color="accent">
+                    mdi-comment-text-outline
+                </v-icon>
+                        <v-badge
+                            color="accent"
+                            :content="commentCount"
+                            >
+                        </v-badge>
+                        <div :class="{CommentForm : isComment}">
+                        <v-col
+                            cols="12"
+                            sm="10"
+                        >
+                        <v-text-field
+                            label="comment"
+                            v-model="tweetCom"
+                            outlined
+                        ></v-text-field>
+                        <v-btn
+                                @click="applyComment"
+                                color="primary"
+                                elevation="2"
+                                raised
+                            >Apply</v-btn>
+                            
+                        </v-col>
+                        </div>
                         <v-icon 
                             v-if="isLike == false"
                             @click="likeButtonClick"
@@ -92,6 +121,35 @@
         </v-card-actions>
                 <!-- actions shown on tweets that are NOT the user logged in-(authenticated)-->
         <v-card-actions v-else>
+                <v-icon class="mr-1"
+                @click="clickToComment"
+                color="accent">
+                    mdi-comment-text-outline
+                </v-icon>
+                        <v-badge
+                            color="accent"
+                            :content="commentCount"
+                            >
+                        </v-badge>
+                        <div :class="{CommentForm : isComment}">
+                        <v-col
+                            cols="12"
+                            sm="10"
+                        >
+                        <v-text-field
+                            label="comment"
+                            v-model="tweetCom"
+                            outlined
+                        ></v-text-field>
+                        <v-btn
+                                @click="applyComment"
+                                color="primary"
+                                elevation="2"
+                                raised
+                            >Apply</v-btn>
+                            
+                        </v-col>
+                        </div>
                         <v-icon 
                             v-if="isLike == false"
                             @click="likeButtonClick"
@@ -109,6 +167,7 @@
                             :content="tweetLikeCount"
                             >
                         </v-badge>
+                        
         </v-card-actions>
     </v-card>
     <PostTweetComment
@@ -140,7 +199,7 @@ import PostTweetComment from './PostTweetComment.vue';
             content : String,
             createdAt: String,
             tweetId: Number,
-            imageUrl: String,
+            userImageUrl: String,
             userId: Number,
         },
         mounted () {
@@ -150,12 +209,15 @@ import PostTweetComment from './PostTweetComment.vue';
         data() {
             return {
                 isForm: true,
+                isComment: true,
                 editedContent: "",
                 authenticated : cookies.get('userId'),
                 tweetComments: [],
                 isLike: false,
                 tweetLikeCount: "",
-                likingUsers: []
+                likingUsers: [],
+                tweetCom: "",
+                commentCount: ""
             }
         },
         methods: {
@@ -165,6 +227,13 @@ import PostTweetComment from './PostTweetComment.vue';
                     this.isForm = false
                 }else if(this.isForm == false){
                     this.isForm = true
+                }
+            },
+            clickToComment(){
+                if (this.isComment == true){
+                    this.isComment = false
+                }else if(this.isComment == false){
+                    this.isComment = true
                 }
             },
             likeButtonClick(){
@@ -226,7 +295,6 @@ import PostTweetComment from './PostTweetComment.vue';
                         this.tweetLikeCount = response.data.length
                         this.likingUsers = response.data
                         let filteredUser = this.likingUsers.filter(this.isLikedByUser)
-                        console.log(filteredUser);
                         if(filteredUser.length == 0){
                             this.isLike = false
                         }else{
@@ -302,6 +370,30 @@ import PostTweetComment from './PostTweetComment.vue';
                 }).then((response) => {
                     // console.log(response);
                     this.tweetComments = response.data;
+                    this.commentCount = response.data.length
+
+
+                }).catch((error) => {
+                    console.error("There was an error" +error);
+                    console.log(error.response);
+                })
+            },
+            applyComment(){
+                axios.request({
+                    url : "https://tweeterest.ml/api/comments",
+                    method : "POST",
+                    headers : {
+                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    data: {
+                        "loginToken": cookies.get('loginToken'),
+                        "tweetId" : this.tweetId,
+                        "content": this.tweetCom
+                    }
+                }).then((response) => {
+                    console.log(response);
+                    this.getComments();
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
@@ -316,8 +408,14 @@ import PostTweetComment from './PostTweetComment.vue';
 .EditForm{
     display: none;
 }
+.CommentForm{
+    display: none;
+}
 .v-application a{
     color: white;
+}
+span{
+    margin-right: 4%;
 }
 
 </style>
