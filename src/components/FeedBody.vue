@@ -79,6 +79,7 @@ import PostTweet from './PostTweet.vue';
                 }).then((response) => {
                     console.log(response);
                     this.feedTweets = response.data.reverse();
+                    console.log(this.feedTweets);
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
