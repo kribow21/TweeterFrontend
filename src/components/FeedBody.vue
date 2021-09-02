@@ -78,12 +78,19 @@ import PostTweet from './PostTweet.vue';
                     }
                 }).then((response) => {
                     console.log(response);
-                    this.feedTweets = response.data.reverse();
+                    this.feedTweets = response.data.sort(this.compareTimes);
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })
             },
+            compareTimes(a,b){
+                if(a.createdAt > b.createdAt){
+                    return -1;
+                }else if (a.createdAt < b.createdAt){
+                    return 1
+                }
+            }
         },
         mounted () {
             this.getAllTweets();
