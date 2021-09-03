@@ -370,7 +370,6 @@ import PostTweetComment from './PostTweetComment.vue';
                         "tweetId": this.tweetId
                     }
                 }).then((response) => {
-                    // console.log(response);
                     this.tweetComments = response.data;
                     this.commentCount = response.data.length
 

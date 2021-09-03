@@ -1,4 +1,5 @@
 <template>
+    
     <v-form>
         <!-- signup form-->
     <v-container>
@@ -11,18 +12,22 @@
         <v-text-field
             label="Email"
             v-model="userEmail"
+            :rules="emailRules"
             outlined
+            clearable
         ></v-text-field>
                 <v-text-field
             label="Username"
             v-model="userUsername"
             outlined
+            clearable
         ></v-text-field>
                 <v-text-field
             label="Password"
             v-model="userPassword"
             :type="'password'"
             outlined
+            clearable
         ></v-text-field>
         </v-col>
         <v-col
@@ -34,16 +39,19 @@
             label="Profile Bio"
             v-model="proBio"
             outlined
+            clearable
         ></v-text-field>
         <v-text-field
-            label="Profile Pic"
+            label="Profile Pic URL"
             v-model="proPic"
             outlined
+            clearable
         ></v-text-field>
                 <v-text-field
             label="YYYY-MM-DD"
             v-model="birthday"
             outlined
+            clearable
         ></v-text-field>
             <v-btn
             @click="makeSignupCall"
@@ -51,6 +59,7 @@
             elevation="2"
             raised
             >Sign Up</v-btn>
+            <h3 id="failResponse"></h3>
         </v-col>
         
     </v-row>
@@ -62,6 +71,7 @@
 <script>
 import axios from "axios";
 import cookies from "vue-cookies"
+
     export default {
         name : 'SignupInput',
         data() {
@@ -73,6 +83,9 @@ import cookies from "vue-cookies"
                 proBio : "",
                 birthday : "",
                 proPic : "",
+                emailRules: [
+                    v => /.+@.+/.test(v) || 'E-mail must be valid',
+        ],
             }
         },
         methods: {
@@ -100,7 +113,8 @@ import cookies from "vue-cookies"
                     this.$router.push('Profile');
                     }).catch((error) => {
                     console.error("There was an error" +error);
-                    console.log(this.email)
+                    document.getElementById('failResponse').innerText="Failed to signup"
+
                     })
                 }
         }

@@ -60,5 +60,7 @@ import PostTweet from './PostTweet.vue'
 </script>
 
 <style scoped>
-
+div{
+    margin: 3% 10% 0 10%;
+}
 </style>

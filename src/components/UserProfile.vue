@@ -68,4 +68,5 @@ import ProfileDeleteComp from './ProfileDeleteComp.vue'
 img{
     width: 250px;
 }
+
 </style>

@@ -1,8 +1,7 @@
 <template>
         <!-- login form for user to pass authentication from api-->
-    <v-form>
+    <v-form >
         <v-container>
-            <v-row>
             <v-col
             cols="12"
             sm="6"
@@ -12,6 +11,7 @@
             v-model="userEmail"
             label="Email"
             outlined
+            clearable
             ></v-text-field>
         </v-col>
         <v-col
@@ -24,6 +24,7 @@
             label="Password"
             :type="'password'"
             outlined
+            clearable
             ></v-text-field>
         </v-col>
             <v-btn
@@ -33,7 +34,6 @@
                 raised
             >Log In</v-btn>
             <h3 id="failResponse"></h3>
-            </v-row>
         </v-container>
     </v-form>
 </template>
@@ -82,7 +82,5 @@ import cookies from "vue-cookies"
 .container{
     margin-top: 3%;
 }
-.row{
-    justify-content: center;
-}
+
 </style>

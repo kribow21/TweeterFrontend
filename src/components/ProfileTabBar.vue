@@ -58,7 +58,6 @@ import ProfileTabFollowing from './ProfileTabFollowing.vue'
         //whatever user is signed in will call for all their tweets when they enter the profile page//
         methods: {
             showMyTweets() {
-                console.log("updating tweets");
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",
                     method : "GET",
