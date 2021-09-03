@@ -8,7 +8,7 @@
                         </v-icon>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-                <h4>{{username}}</h4>
+                    <router-link :to="'user/'+ userId ">{{username}}</router-link>
                 <h6>{{createdAt}}</h6>
                 <p>{{content}}</p>
             </v-expansion-panel-content>
