@@ -1,5 +1,18 @@
 <template>
     <div>
+        <v-textarea
+            outlined
+            clearable
+            name="input-7-4"
+            label="Create A Tweet"
+            v-model="tweetInput"
+        ></v-textarea>
+        <v-btn
+            @click="submitTweet()"
+            color="primary"
+            elevation="2"
+            raised
+        >Post</v-btn>
         <PostTweet
             @UpdateDiscoverBody="showAllTweets"
             v-for="tweet in allTweets"
@@ -17,6 +30,7 @@
 <script>
 import axios from "axios";
 import PostTweet from './PostTweet.vue'
+import cookies from "vue-cookies"
     export default {
         name : 'DiscoverBody',
         components: {
@@ -24,13 +38,36 @@ import PostTweet from './PostTweet.vue'
         },
         data() {
             return {
-                allTweets:[]
+                allTweets:[],
+                tweetInput:""
             }
         },
         mounted () {
             this.showAllTweets();
         },
         methods: {
+            submitTweet() {
+                axios.request({
+                    url : "https://tweeterest.ml/api/tweets",
+                    method : "POST",
+                    headers : {
+                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    data : {
+                        "loginToken" : cookies.get('loginToken'),
+                        "content" : this.tweetInput
+                    }
+                }).then((response) => {
+                    console.log(response);
+                    this.showAllTweets();
+
+                }).catch((error) => {
+                    console.error("There was an error" +error);
+
+                })
+
+            },
             showAllTweets() {
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",

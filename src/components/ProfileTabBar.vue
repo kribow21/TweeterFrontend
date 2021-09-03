@@ -1,16 +1,14 @@
 <template>
     <div>
-    <v-toolbar dense>
+    <v-toolbar dense mobileBreakpoint>
         <template v-slot:extension>
             <v-tabs align-with-title>
             <v-tab
-            @click="showMyTweets"
             >Tweets</v-tab>
             <v-tab>Followers</v-tab>
             <v-tab
             @click="followingTab"
             >Following</v-tab>
-            <v-tab>Likes</v-tab>
             </v-tabs>
         </template>
     </v-toolbar>

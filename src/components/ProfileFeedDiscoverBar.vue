@@ -1,25 +1,26 @@
 <template>
     <div>
-            <v-app-bar
+        <v-app-bar
+        mobileBreakpoint
         app
         color="secondary"
         dark
         height='70px'
     >
-    <div class="d-flex align-center">
-        <v-img
-            alt="Tweeter Logo"
-            class="shrink mr-2"
-            contain
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzjMyQtDIsNe5jSvv7pd37B-Ku0sjD_UX4jQ&usqp=CAU"
-            transition="scale-transition"
-            width="50"
-        />
-        <router-link to="/feed">Home Feed</router-link>
-        <router-link to="/discover">Discover</router-link>
-        <router-link to="/profile">Profile</router-link>
+        <div class="d-flex align-center">
+            <v-img
+                alt="Tweeter Logo"
+                class="shrink mr-2"
+                contain
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzjMyQtDIsNe5jSvv7pd37B-Ku0sjD_UX4jQ&usqp=CAU"
+                transition="scale-transition"
+                width="50"
+                />
+            <router-link to="/feed">Home Feed</router-link>
+            <router-link to="/discover">Discover</router-link>
+            <router-link to="/profile">Profile</router-link>
 
-    </div>
+        </div>
 
     <v-spacer></v-spacer>
         <v-btn
@@ -27,6 +28,7 @@
             color="primary"
             elevation="2"
             raised
+            small
             >Log Out
         </v-btn>
 
