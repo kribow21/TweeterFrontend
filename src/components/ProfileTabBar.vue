@@ -14,18 +14,19 @@
             </v-tabs>
         </template>
     </v-toolbar>
-<!-- This creates the component FeedPostTweet for each tweet and responds to the emits to update themselves on the profile-->
+<!-- This creates the component PostTweet for each tweet and responds to the emits to update themselves on the profile-->
 
     <PostTweet 
-    @UpdateProfileTweets="showMyTweets" v-for="tweet in userTweets"
+    @UpdateProfileTabBar="showMyTweets" 
+    v-for="tweet in userTweets"
     v-bind:key="tweet.tweetId"
     :username="tweet.username"
     :tweetImageUrl="tweet.tweetImageUrl"
     :content="tweet.content"
     :createdAt="tweet.createdAt"
     :tweetId="tweet.tweetId"
-    :imageUrl="tweet.imageUrl"/>
-
+    :userImageUrl="tweet.userImageUrl"
+    :userId="tweet.userId"/>
     <ProfileTabFollowing/>
 
     </div>
@@ -98,7 +99,5 @@ import ProfileTabFollowing from './ProfileTabFollowing.vue'
 </script>
 
 <style scoped>
-#tweet{
-    margin-top: 3%;
-}
+
 </style>

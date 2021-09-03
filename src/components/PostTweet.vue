@@ -35,7 +35,7 @@
             <v-card-text class="text-h5 font-weight-bold">
                 {{content}}
             </v-card-text>
-        <!-- bottom part of card, holds the buttons to edit/like tweets-->
+        <!-- bottom part of card, holds the buttons to edit/like tweets/comment-->
         <v-card-actions v-if="this.authenticated == this.userId">
 <!-- this action will be shown only on your own tweets-->
         <v-list-item class="grow">
@@ -331,7 +331,7 @@ import PostTweetComment from './PostTweetComment.vue';
                     }
                 }).then((response) => {
                     console.log(response);
-                    this.$emit('UpdateFeedTweets');
+                    this.$emit('UpdateProfileTabBar');
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
@@ -352,7 +352,7 @@ import PostTweetComment from './PostTweetComment.vue';
                     }
                 }).then((response) => {
                     console.log(response); 
-                    this.$emit('UpdateFeedTweets');
+                    this.$emit('UpdateProfileTabBar');
                     
                 }).catch((error) => {
                     console.error("There was an error" +error);

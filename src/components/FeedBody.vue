@@ -45,6 +45,9 @@ import PostTweet from './PostTweet.vue';
                 followedTweets: []
             }
         },
+        mounted () {
+            this.whoSignedInFollows();
+        },
         //passes tweet input to api //
         methods: {
             submitTweet() {
@@ -86,7 +89,7 @@ import PostTweet from './PostTweet.vue';
                         this.signedInFollows = response.data;
                         for(let i =0; i < this.signedInFollows.length; i++){
                             this.idsOfPeopleUserFollows = this.signedInFollows[i].userId;
-                            this.callToCollectFollowedUsersTweets(this.signedInFollows[i].userId);
+                            this.collectFollowedUsersTweets(this.signedInFollows[i].userId);
                         }
 
                     }).catch((error) => {
@@ -94,7 +97,7 @@ import PostTweet from './PostTweet.vue';
                     })
             },
             // pushes the tweets into one array that then sorts them from newest to oldest
-            callToCollectFollowedUsersTweets(a){
+            collectFollowedUsersTweets(a){
                     axios.request({
                         url : "https://tweeterest.ml/api/tweets",
                         method : "GET",
@@ -126,9 +129,7 @@ import PostTweet from './PostTweet.vue';
                 }
             }
         },
-        mounted () {
-            this.whoSignedInFollows();
-        },
+
     }
 </script>
 
