@@ -13,7 +13,7 @@
                 <img
                 class="elevation-6"
                 alt="user"
-                src="userImageUrl"
+                :src="userImageUrl"
                 >
             </v-list-item-avatar>
         <!-- dynamic route for other users profile viewing-->
@@ -21,6 +21,7 @@
             <v-list-item-content>
                 <v-list-item-title>
                     <router-link :to="'user/'+ userId ">{{username}}</router-link>
+                    <p>{{createdAt}}</p>
                 </v-list-item-title>
             </v-list-item-content>
             <v-icon
@@ -414,6 +415,7 @@ import PostTweetComment from './PostTweetComment.vue';
 }
 .v-application a{
     color: white;
+    font-size: 1.3rem;
 }
 span{
     margin-right: 4%;
