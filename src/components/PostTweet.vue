@@ -332,6 +332,7 @@ import PostTweetComment from './PostTweetComment.vue';
                 }).then((response) => {
                     console.log(response);
                     this.$emit('UpdateProfileTabBar');
+                    this.$emit('UpdateDiscoverBody');
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
@@ -353,6 +354,7 @@ import PostTweetComment from './PostTweetComment.vue';
                 }).then((response) => {
                     console.log(response); 
                     this.$emit('UpdateProfileTabBar');
+                    this.$emit('UpdateDiscoverBody');
                     
                 }).catch((error) => {
                     console.error("There was an error" +error);

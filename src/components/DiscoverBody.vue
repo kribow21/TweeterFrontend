@@ -1,6 +1,7 @@
 <template>
     <div>
         <PostTweet
+            @UpdateDiscoverBody="showAllTweets"
             v-for="tweet in allTweets"
             v-bind:key="tweet.tweetId"
             :username="tweet.username"

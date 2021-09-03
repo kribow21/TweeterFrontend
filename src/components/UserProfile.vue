@@ -8,7 +8,7 @@
             <v-col>
                 <h3>{{username}}</h3>
                 <p>{{proBio}}</p>
-                <ProfileEditComp/>
+                <ProfileEditComp  @updateUserProfile="getProfile"/>
                 <ProfileDeleteComp/>
             </v-col>
         </v-row>

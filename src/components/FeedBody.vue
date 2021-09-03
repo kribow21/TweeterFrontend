@@ -14,8 +14,7 @@
             elevation="2"
             raised
         >Post</v-btn>
-        <PostTweet  
-        @UpdateFeedTweets="whoSignedInFollows"  
+        <PostTweet    
             v-for="tweet in followedTweets"
             v-bind:key="tweet.tweetId"
             :username="tweet.username"
