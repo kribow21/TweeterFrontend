@@ -7,23 +7,23 @@
             elevation="2"
             raised
         >Delete Profile</v-btn>
-        <div :class="{passwordForm : isForm}">
-        <v-col
-            cols="12"
-            sm="6"
-        >
-        <v-text-field
-            label="Password"
-            v-model="userPassword"
-            :type="'password'"
-            outlined
-        ></v-text-field>
-        <v-btn
-                @click="confirmDelete"
-                color="primary"
-                elevation="2"
-                raised
-            >Confirm</v-btn>
+            <div :class="{passwordForm : isForm}">
+            <v-col
+                cols="12"
+                sm="6"
+            >
+            <v-text-field
+                label="Password"
+                v-model="userPassword"
+                :type="'password'"
+                outlined
+            ></v-text-field>
+                <v-btn
+                    @click="confirmDelete"
+                    color="primary"
+                    elevation="2"
+                    raised
+                >Confirm</v-btn>
         </v-col>
         </div>
     </div>
@@ -63,7 +63,9 @@ import cookies from "vue-cookies"
                 }).then((response) => {
                     console.log(response);
                     cookies.remove('loginToken');
-                    cookies.remove('userId')
+                    cookies.remove('userId');
+                    this.$router.push('/');
+
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
