@@ -25,12 +25,11 @@
                 </v-list-item-title>
             </v-list-item-content>
             <v-icon
-                large
+                small
                 left
                 >
                 mdi-twitter
             </v-icon>
-            <span class="text-h6 font-weight-light">Tweeter</span>
         </v-card-title>
             <v-card-text class="text-h5 font-weight-bold">
                 {{content}}
@@ -421,5 +420,6 @@ import PostTweetComment from './PostTweetComment.vue';
 span{
     margin-right: 4%;
 }
+
 
 </style>

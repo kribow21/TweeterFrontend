@@ -68,5 +68,9 @@ import ProfileDeleteComp from './ProfileDeleteComp.vue'
 img{
     width: 250px;
 }
-
+.container{
+    background-color: rgb(170, 54, 216);
+    color: white;
+    width: 80%;
+}
 </style>

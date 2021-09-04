@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Home Feed</h1>
         <!-- Basically the feed page container , has the input to make a tweet and renders the tweets on the feed-->
         <v-textarea
             outlined

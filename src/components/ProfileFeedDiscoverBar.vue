@@ -2,6 +2,7 @@
     <div>
         <v-app-bar
         mobileBreakpoint
+        min-width="300px"
         app
         color="secondary"
         dark
@@ -51,5 +52,7 @@ import cookies from "vue-cookies"
 </script>
 
 <style scoped>
-
+a{
+    padding: 2%;
+}
 </style>

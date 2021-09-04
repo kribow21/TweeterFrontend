@@ -244,4 +244,7 @@ import cookies from "vue-cookies"
 .EditComment{
     display: none;
 }
+p ,h6{
+color: rgb(170, 54, 216);
+}
 </style>

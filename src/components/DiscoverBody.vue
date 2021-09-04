@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Discover</h1>
         <v-textarea
             outlined
             clearable

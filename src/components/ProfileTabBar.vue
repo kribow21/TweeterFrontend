@@ -96,5 +96,10 @@ import ProfileTabFollowing from './ProfileTabFollowing.vue'
 </script>
 
 <style scoped>
-
+div{
+    margin: 0 10% 3% 10%;
+}
+.v-tab{
+    margin: 0%;
+}
 </style>
