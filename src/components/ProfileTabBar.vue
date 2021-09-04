@@ -5,7 +5,10 @@
             <v-tabs align-with-title>
             <v-tab
             >Tweets</v-tab>
-            <v-tab>Followers</v-tab>
+            <v-tab
+            @click="followerTab"
+            >Followers
+            </v-tab>
             <v-tab
             @click="followingTab"
             >Following</v-tab>
@@ -25,8 +28,20 @@
     :tweetId="tweet.tweetId"
     :userImageUrl="tweet.userImageUrl"
     :userId="tweet.userId"/>
-    <ProfileTabFollowing/>
-
+    <ProfileTabFollowing
+    v-for="following in userFollowing"
+    v-bind:key="following.userId"
+    :username="following.username"
+    :imageUrl="following.imageUrl"
+    :userId="following.userId"
+    :bio="following.bio"/>
+    <ProfileTabFollowers
+    v-for="follower in userFollowers"
+    v-bind:key="follower.userId"
+    :username="follower.username"
+    :imageUrl="follower.imageUrl"
+    :userId="follower.userId"
+    :bio="follower.bio"/>
     </div>
 
 </template>
@@ -35,16 +50,19 @@
 import axios from "axios";
 import PostTweet from './PostTweet.vue'
 import ProfileTabFollowing from './ProfileTabFollowing.vue'
+import ProfileTabFollowers from './ProfileTabFollowers.vue';
     export default {
         name : 'ProfileTabBar',
         components: {
             PostTweet,
-            ProfileTabFollowing
+            ProfileTabFollowing,
+            ProfileTabFollowers
         },
         data() {
             return {
                 userTweets : [],
-                userFollowing: []
+                userFollowing: [],
+                userFollowers:[]
             }
         },
         props: {
@@ -69,6 +87,24 @@ import ProfileTabFollowing from './ProfileTabFollowing.vue'
                 }).then((response) => {
                     console.log(response); 
                         this.userTweets = response.data.reverse();
+                }).catch((error) => {
+                    console.error("There was an error" +error);
+                })
+            },
+            followerTab(){
+                axios.request({
+                    url : "https://tweeterest.ml/api/followers",
+                    method : "GET",
+                    headers : {
+                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    params : {
+                        userId : this.userId
+                    }
+                }).then((response) => {
+                    console.log(response); 
+                        this.userFollowers = response.data.reverse();
                 }).catch((error) => {
                     console.error("There was an error" +error);
                 })

@@ -5,7 +5,7 @@
         <v-row dense>
             <v-col cols="12">
             <v-card
-                color="secondary"
+                color="accent"
                 dark
             >
                 <v-card-title class="text-h5">
@@ -31,7 +31,7 @@
 
 <script>
     export default {
-        name : 'ProfileTabFollowing',
+        name : 'ProfileTabFollowers',
         props: {
             username : String,
             tweetId: Number,
