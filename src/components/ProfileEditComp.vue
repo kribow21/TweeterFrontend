@@ -16,19 +16,12 @@
                 <v-col
                     cols="12"
                     sm="6"
-                    md="3"
                 >
                 <v-text-field
                     label="Email"
                     v-model="userEmail"
                     outlined
                 ></v-text-field>
-                </v-col>
-                <v-col
-                    cols="12"
-                    sm="6"
-                    md="3"
-                >
                 <v-text-field
                     label="Username"
                     v-model="userUsername"
@@ -38,19 +31,12 @@
                 <v-col
                     cols="12"
                     sm="6"
-                    md="3"
                 >
                 <v-text-field
                     label="Profile Bio"
                     v-model="proBio"
                     outlined
                 ></v-text-field>
-                </v-col>
-                <v-col
-                    cols="12"
-                    sm="6"
-                    md="3"
-                >
                 <v-text-field
                     label="Profile Pic"
                     v-model="proPic"
@@ -60,7 +46,6 @@
                 <v-col
                     cols="12"
                     sm="6"
-                    md="3"
                 >
                 <v-text-field
                     label="YYYY-MM-DD"
