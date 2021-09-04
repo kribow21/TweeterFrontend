@@ -11,14 +11,14 @@
             <v-btn
                 v-if="isFollowing == false"
                 @click="followButtonClick"
-                color="accent"
+                color="primary"
                 elevation="2"
                 raised
             >Follow Me</v-btn>
             <v-btn
                 v-else
                 @click="followButtonClick"
-                color="accent"
+                color="primary"
                 elevation="2"
                 raised
             >Unfollow</v-btn>
@@ -149,5 +149,10 @@ import cookies from "vue-cookies"
 <style scoped>
 img{
     width: 250px;
+}
+.container{
+    background-color: rgb(170, 54, 216);
+    color: white;
+    width: 80%;
 }
 </style>
