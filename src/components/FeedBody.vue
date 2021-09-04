@@ -14,7 +14,7 @@
             color="primary"
             elevation="2"
             raised
-        >Post</v-btn>
+        >Tweet</v-btn>
         <PostTweet    
             v-for="tweet in followedTweets"
             v-bind:key="tweet.tweetId"

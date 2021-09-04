@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Following</h1>
         <v-card>
             <v-container>
         <v-row dense>
