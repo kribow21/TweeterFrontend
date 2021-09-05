@@ -6,11 +6,11 @@
             <v-tab
             >Tweets</v-tab>
             <v-tab
-            @click="followerTab"
+            @click="getFollowers"
             >Followers
             </v-tab>
             <v-tab
-            @click="followingTab"
+            @click="getFollowing"
             >Following</v-tab>
             </v-tabs>
         </template>
@@ -28,7 +28,7 @@
     :tweetId="tweet.tweetId"
     :userImageUrl="tweet.userImageUrl"
     :userId="tweet.userId"/>
-    <ProfileTabFollowing
+    <component :is="`ProfileTabFollowing`"
     v-for="following in userFollowing"
     v-bind:key="following.userId"
     :username="following.username"
@@ -91,7 +91,7 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
                     console.error("There was an error" +error);
                 })
             },
-            followerTab(){
+            getFollowers(){
                 axios.request({
                     url : "https://tweeterest.ml/api/followers",
                     method : "GET",
@@ -109,7 +109,7 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
                     console.error("There was an error" +error);
                 })
             },
-            followingTab(){
+            getFollowing(){
                 axios.request({
                     url : "https://tweeterest.ml/api/follows",
                     method : "GET",

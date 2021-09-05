@@ -33,5 +33,12 @@
 </script>
 
 <style scoped>
-
+a{
+    padding: 5%;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+    color: rgb(170, 54, 216);
+}
 </style>

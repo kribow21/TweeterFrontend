@@ -1,16 +1,22 @@
 <template>
         <!-- login form for user to pass authentication from api-->
     <v-form >
-
         <v-container>
+            <v-col
+        cols="12">
+            <v-img
+            max-height="280"
+            max-width="250"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzjMyQtDIsNe5jSvv7pd37B-Ku0sjD_UX4jQ&usqp=CAU"
+            ></v-img>
+        </v-col>
+        <v-col
+        cols="12">
+            <h1>Welcome Tweeter</h1>
+        </v-col>
             <v-col
             cols="12"
             >
-        <v-img
-            max-height="300"
-            max-width="250"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzjMyQtDIsNe5jSvv7pd37B-Ku0sjD_UX4jQ&usqp=CAU"
-        ></v-img>
             <v-text-field
             v-model="userEmail"
             label="Email"
@@ -83,9 +89,12 @@ import cookies from "vue-cookies"
 
 <style scoped>
 .container{
-    margin-top: 3%;
     display: grid;
     justify-content: center;
+}
+h1{
+    color: rgb(170, 54, 216);
+    
 }
 
 

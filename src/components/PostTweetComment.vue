@@ -3,9 +3,7 @@
             <v-expansion-panels>
             <v-expansion-panel>
             <v-expansion-panel-header>
-                        <v-icon color="accent">
-                            Comments
-                        </v-icon>
+                        <p>Open Comment</p>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
                     <router-link :to="'user/'+ userId ">{{username}}</router-link>

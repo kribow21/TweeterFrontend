@@ -11,7 +11,6 @@
         <div class="d-flex align-center">
             <v-img
                 alt="Tweeter Logo"
-                class="shrink mr-2"
                 contain
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzjMyQtDIsNe5jSvv7pd37B-Ku0sjD_UX4jQ&usqp=CAU"
                 transition="scale-transition"
@@ -53,6 +52,11 @@ import cookies from "vue-cookies"
 
 <style scoped>
 a{
-    padding: 2%;
+    padding: 5%;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+    color: rgb(170, 54, 216);
 }
 </style>

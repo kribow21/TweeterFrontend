@@ -83,7 +83,6 @@
                         <div :class="{CommentForm : isComment}">
                         <v-col
                             cols="12"
-                            sm="10"
                         >
                         <v-text-field
                             label="comment"
