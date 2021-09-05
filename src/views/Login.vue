@@ -1,27 +1,18 @@
 <template>
-  <LoginContainer/>
+  <div>
+    <router-link to="/">Login</router-link>
+    <router-link to="/signup">Sign Up</router-link>
+    <LoginInput/>
+  </div>
 </template>
 
 <script>
-  import LoginContainer from '../components/LoginContainer'
-// import cookies from "vue-cookies"
+import LoginInput from '../components/LoginInput.vue'
 
   export default {
     name: 'Home',
     components: {
-      LoginContainer,
-    },
-    methods: {
-      // validate() {
-      //   if (cookies.get('loginToken') == 'undefined'){
-          
-      //   }
-      // }
-      
-    },
+        LoginInput,
+    }
   }
 </script>
-beforeRouteLeave(to, from, next){
-  if (to.Feed !== !isAuthenticated from.Login) 
-  else next(false)
-}

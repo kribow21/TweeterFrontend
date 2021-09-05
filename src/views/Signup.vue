@@ -1,15 +1,15 @@
 <template>
     <div>
-        <SignupContainer/>
+        <SignupInput/>
     </div>
 </template>
 
 <script>
-import SignupContainer from '../components/SignupContainer.vue'
+import SignupInput from '../components/SignupInput.vue'
     export default {
         name : 'Register',
         components : {
-            SignupContainer
+            SignupInput
         }
     }
 </script>
