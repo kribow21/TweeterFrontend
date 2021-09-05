@@ -130,7 +130,7 @@
                             :content="commentCount"
                             >
                         </v-badge>
-                        <div :class="{CommentForm : isComment}">
+                    <div :class="{CommentForm : isComment}">
                         <v-col
                             cols="12"
                             sm="10"
@@ -148,7 +148,7 @@
                             >Apply</v-btn>
                             
                         </v-col>
-                        </div>
+                    </div>
                         <v-icon 
                             v-if="isLike == false"
                             @click="likeButtonClick"
@@ -166,7 +166,6 @@
                             :content="tweetLikeCount"
                             >
                         </v-badge>
-                        
         </v-card-actions>
     </v-card>
     <PostTweetComment

@@ -11,14 +11,14 @@
             <v-btn
                 v-if="isFollowing == false"
                 @click="followButtonClick"
-                color="primary"
+                color="accent"
                 elevation="2"
                 raised
             >Follow Me</v-btn>
             <v-btn
                 v-else
                 @click="followButtonClick"
-                color="primary"
+                color="secondary"
                 elevation="2"
                 raised
             >Unfollow</v-btn>

@@ -1,8 +1,8 @@
 <template>
     <div>
-    <v-toolbar dense mobileBreakpoint>
+    <v-toolbar dense>
         <template v-slot:extension>
-            <v-tabs align-with-title>
+            <v-tabs mobileBreakpoint align-with-title grow slider-color="accent">
             <v-tab
             >Tweets</v-tab>
             <v-tab
@@ -16,7 +16,7 @@
         </template>
     </v-toolbar>
 <!-- This creates the component PostTweet for each tweet and responds to the emits to update themselves on the profile-->
-
+<component :is="activeTab"/>
     <PostTweet 
     @UpdateProfileTabBar="showMyTweets" 
     v-for="tweet in userTweets"
@@ -28,7 +28,7 @@
     :tweetId="tweet.tweetId"
     :userImageUrl="tweet.userImageUrl"
     :userId="tweet.userId"/>
-    <component :is="`ProfileTabFollowing`"
+    <ProfileTabFollowing
     v-for="following in userFollowing"
     v-bind:key="following.userId"
     :username="following.username"
@@ -62,7 +62,8 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
             return {
                 userTweets : [],
                 userFollowing: [],
-                userFollowers:[]
+                userFollowers:[],
+                activeTab: "ProfileTabFollowers"
             }
         },
         props: {

@@ -5,7 +5,6 @@
         min-width="300px"
         app
         color="secondary"
-        dark
         height='70px'
     >
         <div class="d-flex align-center">
@@ -52,7 +51,6 @@ import cookies from "vue-cookies"
 
 <style scoped>
 a{
-    padding: 5%;
     text-decoration: none;
 }
 a:hover{
