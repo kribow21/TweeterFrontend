@@ -1,6 +1,8 @@
 <template>
     
     <v-form>
+        <router-link to="/">Login</router-link>
+        <router-link to="/signup">Sign Up</router-link>
         <!-- signup form-->
     <v-container>
         <v-row>
@@ -63,7 +65,6 @@
         </v-col>
         
     </v-row>
-
     </v-container>
     </v-form>    
 </template>

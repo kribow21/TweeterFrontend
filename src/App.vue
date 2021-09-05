@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <LoginSignupBar/>
     <v-main>
       <router-view/>
     </v-main>
@@ -8,10 +7,9 @@
 </template>
 
 <script>
-import LoginSignupBar from './components/LoginSignupBar.vue';
+
 
 export default {
-  components: { LoginSignupBar },
   name: 'App',
 
   data: () => ({

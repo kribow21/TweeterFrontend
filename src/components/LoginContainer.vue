@@ -1,7 +1,9 @@
 <template>
     <div>
+        <router-link to="/">Login</router-link>
+        <router-link to="/signup">Sign Up</router-link>
         <LoginInput/>
-        
+                
     </div>
 </template>
 
