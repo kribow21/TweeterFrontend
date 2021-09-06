@@ -5,7 +5,17 @@
         <router-link to="/signup">Sign Up</router-link>
         <!-- signup form-->
     <v-container>
-        <v-row>
+    <v-row>
+        <v-col
+        cols="12" class="align-self-md-center">
+            <v-img
+            max-height="280"
+            max-width="250"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzjMyQtDIsNe5jSvv7pd37B-Ku0sjD_UX4jQ&usqp=CAU"
+            ></v-img>
+            <h1>Join Tweeter</h1>
+        </v-col>
+
         <v-col
             cols="12"
             sm="6"
@@ -108,7 +118,6 @@ import cookies from "vue-cookies"
                         "imageUrl": this.proPic,
                         }
                     }).then((response) => {
-                    console.log(response);
                     cookies.set('loginToken', response.data.loginToken)
                     cookies.set('userId', response.data.userId);
                     this.$router.push('Profile');
@@ -124,10 +133,10 @@ import cookies from "vue-cookies"
 </script>
 
 <style scoped>
-.container{
-    margin-top: 3%;
-}
 .row{
     justify-content: center;
+}
+h1{
+    color: rgb(170, 54, 216);
 }
 </style>
