@@ -1,7 +1,8 @@
 <template>
     <div>
+        <!-- Shows Tweets from people you follow. not your own. If you make a tweet on here it will show on discover or profile-->
+
         <h1>Home Feed</h1>
-        <!-- Basically the feed page container , has the input to make a tweet and renders the tweets on the feed-->
         <v-textarea
             outlined
             clearable
@@ -48,7 +49,7 @@ import PostTweet from './PostTweet.vue';
         mounted () {
             this.whoSignedInFollows();
         },
-        //passes tweet input to api //
+        //passes tweet input to api and then PostTweet recieves the response in props //
         methods: {
             submitTweet() {
                 axios.request({
@@ -64,7 +65,6 @@ import PostTweet from './PostTweet.vue';
                     }
                 }).then((response) => {
                     console.log(response);
-                    this.whoSignedInFollows()
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
@@ -111,8 +111,6 @@ import PostTweet from './PostTweet.vue';
                     }).then((response) => {
                         this.followedTweets = this.followedTweets.concat(response.data)
                         this.followedTweets.sort(this.compareTimes)
-                        console.log(this.followedTweets);
-
 
                     }).catch((error) => {
                         console.error("There was an error" +error);
