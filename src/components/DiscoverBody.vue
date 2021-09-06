@@ -13,7 +13,7 @@
             color="primary"
             elevation="2"
             raised
-        >Post</v-btn>
+        >Tweet</v-btn>
         <PostTweet
             @UpdateDiscoverBody="showAllTweets"
             v-for="tweet in allTweets"

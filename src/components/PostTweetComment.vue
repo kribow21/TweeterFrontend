@@ -129,8 +129,7 @@ import cookies from "vue-cookies"
                         "commentId": this.commentId,
                         "content": this.editedComment
                     }
-                }).then((response) => {
-                    console.log(response);
+                }).then(() => {
                     this.$emit('UpdatePostTweet');
 
                 }).catch((error) => {
@@ -149,8 +148,7 @@ import cookies from "vue-cookies"
                         "loginToken" : cookies.get('loginToken'),
                         "commentId": this.commentId,
                     }
-                }).then((response) => {
-                    console.log(response); 
+                }).then(() => {
                     this.$emit('UpdatePostTweet');
                     
                 }).catch((error) => {
@@ -171,8 +169,7 @@ import cookies from "vue-cookies"
                             "loginToken": cookies.get('loginToken'),
                             "tweetId" : this.tweetId
                         }
-                    }).then((response) => {
-                        console.log(response);
+                    }).then(() => {
                         this.getTweetLikes();
 
                     }).catch((error) => {
@@ -191,8 +188,7 @@ import cookies from "vue-cookies"
                             "loginToken": cookies.get('loginToken'),
                             "tweetId" : this.tweetId
                         }
-                    }).then((response) => {
-                        console.log(response);
+                    }).then(() => {
                         this.getTweetLikes();
 
                     }).catch((error) => {

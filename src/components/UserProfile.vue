@@ -50,11 +50,10 @@ import ProfileDeleteComp from './ProfileDeleteComp.vue'
                         userId : cookies.get('userId')
                     }
                 }).then((response) => {
-                    console.log(response);
                     this.userPic = response.data[0].imageUrl;
                     this.username = response.data[0].username;
                     this.proBio = response.data[0].bio;
-                    
+                    //passes to data to use in template
 
                 }).catch((error) => {
                     console.error("There was an error" +error);

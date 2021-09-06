@@ -16,7 +16,7 @@
         </template>
     </v-toolbar>
 <!-- This creates the component PostTweet for each tweet and responds to the emits to update themselves on the profile-->
-<component :is="activeTab"/>
+<!-- <component :is="activeTab"/> -->
     <PostTweet 
     @UpdateProfileTabBar="showMyTweets" 
     v-for="tweet in userTweets"
@@ -63,7 +63,7 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
                 userTweets : [],
                 userFollowing: [],
                 userFollowers:[],
-                activeTab: "ProfileTabFollowers"
+                // activeTab: "ProfileTabFollowers"
             }
         },
         props: {
