@@ -55,7 +55,7 @@
                         </v-icon>
                         <v-badge
                             color="accent"
-                            :content="0"
+                            :content="tweetLikeCount"
                             >
                         </v-badge>
             </v-expansion-panel-content>
@@ -129,7 +129,8 @@ import cookies from "vue-cookies"
                         "commentId": this.commentId,
                         "content": this.editedComment
                     }
-                }).then(() => {
+                }).then((response) => {
+                    console.log(response);
                     this.$emit('UpdatePostTweet');
 
                 }).catch((error) => {
@@ -148,7 +149,8 @@ import cookies from "vue-cookies"
                         "loginToken" : cookies.get('loginToken'),
                         "commentId": this.commentId,
                     }
-                }).then(() => {
+                }).then((response) => {
+                    console.log(response); 
                     this.$emit('UpdatePostTweet');
                     
                 }).catch((error) => {
@@ -169,7 +171,8 @@ import cookies from "vue-cookies"
                             "loginToken": cookies.get('loginToken'),
                             "tweetId" : this.tweetId
                         }
-                    }).then(() => {
+                    }).then((response) => {
+                        console.log(response);
                         this.getTweetLikes();
 
                     }).catch((error) => {
@@ -188,7 +191,8 @@ import cookies from "vue-cookies"
                             "loginToken": cookies.get('loginToken'),
                             "tweetId" : this.tweetId
                         }
-                    }).then(() => {
+                    }).then((response) => {
+                        console.log(response);
                         this.getTweetLikes();
 
                     }).catch((error) => {
