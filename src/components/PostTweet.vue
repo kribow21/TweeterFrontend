@@ -1,7 +1,6 @@
 <template>
     <div>
-        <!-- responsible for all individual tweet components on website. Feedbody passes the input to this component-->
-
+        <!-- responsible for all individual tweet components on website. Feedbody/DiscoverBody passes the input to this component-->
         <v-card
         class="mx-auto"
         color="primary"
@@ -34,7 +33,7 @@
             <v-card-text class="text-h5 font-weight-bold">
                 {{content}}
             </v-card-text>
-        <!-- bottom part of card, holds the buttons to edit/like tweets/comment-->
+        <!-- bottom part of card, holds the buttons to edit/like/comment-->
         <v-card-actions v-if="this.authenticated == this.userId">
 <!-- this action will be shown only on your own tweets-->
         <v-list-item class="grow">
@@ -118,7 +117,7 @@
             </v-row>
             </v-list-item>
         </v-card-actions>
-                <!-- actions shown on tweets that are NOT the user logged in-(authenticated)-->
+                <!-- actions shown on tweets that are NOT the user logged in-->
         <v-card-actions v-else>
                 <v-icon class="mr-1"
                 @click="clickToComment"
@@ -220,7 +219,7 @@ import PostTweetComment from './PostTweetComment.vue';
             }
         },
         methods: {
-                    //shows input so the user can change tweets content//
+                    //shows input so the user can change tweets/comments content with class binding//
             clickToEdit(){
                 if (this.isForm == true){
                     this.isForm = false
@@ -249,8 +248,7 @@ import PostTweetComment from './PostTweetComment.vue';
                             "loginToken": cookies.get('loginToken'),
                             "tweetId" : this.tweetId
                         }
-                    }).then((response) => {
-                        console.log(response);
+                    }).then(() => {
                         this.getTweetLikes();
 
                     }).catch((error) => {
@@ -269,8 +267,7 @@ import PostTweetComment from './PostTweetComment.vue';
                             "loginToken": cookies.get('loginToken'),
                             "tweetId" : this.tweetId
                         }
-                    }).then((response) => {
-                        console.log(response);
+                    }).then(() => {
                         this.getTweetLikes();
 
                     }).catch((error) => {
@@ -290,7 +287,6 @@ import PostTweetComment from './PostTweetComment.vue';
                             "tweetId" : this.tweetId
                         }
                     }).then((response) => {
-                        // console.log(response);
                         this.tweetLikeCount = response.data.length
                         this.likingUsers = response.data
                         let filteredUser = this.likingUsers.filter(this.isLikedByUser)
@@ -312,7 +308,7 @@ import PostTweetComment from './PostTweetComment.vue';
                     return false
                 }
             },
-            //emits to FeedBody that it needs to edit itself with the changes made
+            //emits to FeedBody/DiscoverBody that it needs to edit itself with the changes made
             editTweet() {
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",
@@ -326,8 +322,7 @@ import PostTweetComment from './PostTweetComment.vue';
                         "tweetId": this.tweetId,
                         "content": this.editedContent
                     }
-                }).then((response) => {
-                    console.log(response);
+                }).then(() => {
                     this.$emit('UpdateProfileTabBar');
                     this.$emit('UpdateDiscoverBody');
 
@@ -335,7 +330,7 @@ import PostTweetComment from './PostTweetComment.vue';
                     console.error("There was an error" +error);
                 })
             },
-            //emits to FeedBody that it needs to edit itself with the changes made
+            //emits to FeedBody/DiscoverBody that it needs to edit itself with the changes made
             deleteTweet(){
                 axios.request({
                     url : "https://tweeterest.ml/api/tweets",
@@ -348,8 +343,7 @@ import PostTweetComment from './PostTweetComment.vue';
                         "loginToken" : cookies.get('loginToken'),
                         "tweetId": this.tweetId,
                     }
-                }).then((response) => {
-                    console.log(response); 
+                }).then(() => {
                     this.$emit('UpdateProfileTabBar');
                     this.$emit('UpdateDiscoverBody');
                     
@@ -375,7 +369,6 @@ import PostTweetComment from './PostTweetComment.vue';
 
                 }).catch((error) => {
                     console.error("There was an error" +error);
-                    console.log(error.response);
                 })
             },
             applyComment(){
@@ -391,8 +384,7 @@ import PostTweetComment from './PostTweetComment.vue';
                         "tweetId" : this.tweetId,
                         "content": this.tweetCom
                     }
-                }).then((response) => {
-                    console.log(response);
+                }).then(() => {
                     this.getComments();
 
                 }).catch((error) => {
