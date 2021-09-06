@@ -83,8 +83,7 @@ import cookies from "vue-cookies"
                             "loginToken": cookies.get('loginToken'),
                             "followId" : this.userId
                         }
-                    }).then((response) => {
-                        console.log(response);
+                    }).then(() => {
                         this.getFollows();
 
                     }).catch((error) => {
@@ -102,8 +101,7 @@ import cookies from "vue-cookies"
                             "loginToken": cookies.get('loginToken'),
                             "followId" : this.userId
                         }
-                    }).then((response) => {
-                        console.log(response);
+                    }).then(() => {
                         this.getFollows();
 
                     }).catch((error) => {
@@ -111,6 +109,7 @@ import cookies from "vue-cookies"
                     })
                 }
             },
+            //conditional rendering method to determine what follow/unfollow button is displayed
             getFollows(){
                     axios.request({
                         url : "https://tweeterest.ml/api/follows",

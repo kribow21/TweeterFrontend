@@ -59,8 +59,7 @@ import cookies from "vue-cookies"
                         "loginToken" : cookies.get('loginToken'),
                         "content" : this.tweetInput
                     }
-                }).then((response) => {
-                    console.log(response);
+                }).then(() => {
                     this.showAllTweets();
 
                 }).catch((error) => {
@@ -78,7 +77,6 @@ import cookies from "vue-cookies"
                         'Content-Type': 'application/json'
                     },
                 }).then((response) => {
-                    console.log(response); 
                         this.allTweets = response.data.sort(this.compareTimes)
                 }).catch((error) => {
                     console.error("There was an error" +error);
