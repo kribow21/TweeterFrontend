@@ -102,10 +102,9 @@ import cookies from "vue-cookies"
         methods: {
             makeSignupCall() {
                 axios.request({
-                    url : "https://tweeterest.ml/api/users",
+                    url : "https://www.kbtweeter.ml/api/users",
                     method : "POST",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data : 

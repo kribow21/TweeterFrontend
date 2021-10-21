@@ -61,10 +61,9 @@ import cookies from "vue-cookies"
                 methods : {
                     makeLoginRequest : function() {
                     axios.request({
-                    url : "https://tweeterest.ml/api/login",
+                    url : "https://www.kbtweeter.ml/api/login",
                     method : "POST",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data : {

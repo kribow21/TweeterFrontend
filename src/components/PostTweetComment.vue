@@ -118,10 +118,9 @@ import cookies from "vue-cookies"
             },
             editComment() {
                 axios.request({
-                    url : "https://tweeterest.ml/api/comments",
+                    url : "https://www.kbtweeter.ml/api/comments",
                     method : "PATCH",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data: {
@@ -139,10 +138,9 @@ import cookies from "vue-cookies"
             },
             deleteComment(){
                 axios.request({
-                    url : "https://tweeterest.ml/api/comments",
+                    url : "https://www.kbtweeter.ml/api/comments",
                     method : "Delete",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data: {
@@ -161,10 +159,9 @@ import cookies from "vue-cookies"
                 if(this.isLike == false){
                     console.log('false');
                     axios.request({
-                        url : "https://tweeterest.ml/api/tweet-likes",
+                        url : "https://www.kbtweeter.ml/api/tweet-likes",
                         method : "POST",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         data : {
@@ -181,10 +178,9 @@ import cookies from "vue-cookies"
                 }else if(this.isLike == true){
                     console.log('true');
                     axios.request({
-                        url : "https://tweeterest.ml/api/tweet-likes",
+                        url : "https://www.kbtweeter.ml/api/tweet-likes",
                         method : "DELETE",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         data : {
@@ -202,10 +198,9 @@ import cookies from "vue-cookies"
             },
                 getTweetLikes(){
                     axios.request({
-                        url : "https://tweeterest.ml/api/tweet-likes",
+                        url : "https://www.kbtweeter.ml/api/tweet-likes",
                         method : "GET",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         params : {

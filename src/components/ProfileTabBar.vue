@@ -76,10 +76,9 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
         methods: {
             showMyTweets() {
                 axios.request({
-                    url : "https://tweeterest.ml/api/tweets",
+                    url : "https://www.kbtweeter.ml/api/tweets",
                     method : "GET",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     params : {
@@ -94,10 +93,9 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
             },
             getFollowers(){
                 axios.request({
-                    url : "https://tweeterest.ml/api/followers",
+                    url : "https://www.kbtweeter.ml/api/followers",
                     method : "GET",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     params : {
@@ -112,10 +110,9 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
             },
             getFollowing(){
                 axios.request({
-                    url : "https://tweeterest.ml/api/follows",
+                    url : "https://www.kbtweeter.ml/api/follows",
                     method : "GET",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     params : {

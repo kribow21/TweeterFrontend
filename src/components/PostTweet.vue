@@ -238,10 +238,9 @@ import PostTweetComment from './PostTweetComment.vue';
                 if(this.isLike == false){
                     console.log('false');
                     axios.request({
-                        url : "https://tweeterest.ml/api/tweet-likes",
+                        url : "https://www.kbtweeter.ml/api/tweet-likes",
                         method : "POST",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         data : {
@@ -257,10 +256,9 @@ import PostTweetComment from './PostTweetComment.vue';
                 }else if(this.isLike == true){
                     console.log('true');
                     axios.request({
-                        url : "https://tweeterest.ml/api/tweet-likes",
+                        url : "https://www.kbtweeter.ml/api/tweet-likes",
                         method : "DELETE",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         data : {
@@ -277,10 +275,9 @@ import PostTweetComment from './PostTweetComment.vue';
             },
             getTweetLikes(){
                     axios.request({
-                        url : "https://tweeterest.ml/api/tweet-likes",
+                        url : "https://www.kbtweeter.ml/api/tweet-likes",
                         method : "GET",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         params : {
@@ -311,10 +308,9 @@ import PostTweetComment from './PostTweetComment.vue';
             //emits to FeedBody/DiscoverBody that it needs to edit itself with the changes made
             editTweet() {
                 axios.request({
-                    url : "https://tweeterest.ml/api/tweets",
+                    url : "https://www.kbtweeter.ml/api/tweets",
                     method : "PATCH",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data: {
@@ -333,10 +329,9 @@ import PostTweetComment from './PostTweetComment.vue';
             //emits to FeedBody/DiscoverBody that it needs to edit itself with the changes made
             deleteTweet(){
                 axios.request({
-                    url : "https://tweeterest.ml/api/tweets",
+                    url : "https://www.kbtweeter.ml/api/tweets",
                     method : "Delete",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data: {
@@ -353,10 +348,9 @@ import PostTweetComment from './PostTweetComment.vue';
             },
             getComments(){
                 axios.request({
-                    url : "https://tweeterest.ml/api/comments",
+                    url : "https://www.kbtweeter.ml/api/comments",
                     method : "GET",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     params: {
@@ -373,10 +367,9 @@ import PostTweetComment from './PostTweetComment.vue';
             },
             applyComment(){
                 axios.request({
-                    url : "https://tweeterest.ml/api/comments",
+                    url : "https://www.kbtweeter.ml/api/comments",
                     method : "POST",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data: {

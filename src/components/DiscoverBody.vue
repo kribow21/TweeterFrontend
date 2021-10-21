@@ -49,10 +49,9 @@ import cookies from "vue-cookies"
         methods: {
             submitTweet() {
                 axios.request({
-                    url : "https://tweeterest.ml/api/tweets",
+                    url : "https://www.kbtweeter.ml/api/tweets",
                     method : "POST",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data : {
@@ -70,10 +69,9 @@ import cookies from "vue-cookies"
             },
             showAllTweets() {
                 axios.request({
-                    url : "https://tweeterest.ml/api/tweets",
+                    url : "https://www.kbtweeter.ml/api/tweets",
                     method : "GET",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                 }).then((response) => {

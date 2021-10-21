@@ -52,7 +52,7 @@ import cookies from "vue-cookies"
         methods: {
             getProfile() {
                     axios.request({
-                    url : "https://tweeterest.ml/api/users",
+                    url : "https://www.kbtweeter.ml/api/users",
                     method : "GET",
                     headers : {
                         'X-Api-Key' : process.env.VUE_APP_API_KEY,
@@ -73,10 +73,9 @@ import cookies from "vue-cookies"
             followButtonClick(){
                 if(this.isFollowing == false){
                     axios.request({
-                        url : "https://tweeterest.ml/api/follows",
+                        url : "https://kbtweeter.ml/api/follows",
                         method : "POST",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         data : {
@@ -91,10 +90,9 @@ import cookies from "vue-cookies"
                 })
                 }else if (this.isFollowing == true){
                     axios.request({
-                        url : "https://tweeterest.ml/api/follows",
+                        url : "https://www.kbtweeter.ml/api/follows",
                         method : "DELETE",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         data : {
@@ -112,10 +110,9 @@ import cookies from "vue-cookies"
             //conditional rendering method to determine what follow/unfollow button is displayed
             getFollows(){
                     axios.request({
-                        url : "https://tweeterest.ml/api/follows",
+                        url : "https://www.kbtweeter.ml/api/follows",
                         method : "GET",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         params : {

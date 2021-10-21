@@ -53,10 +53,9 @@ import PostTweet from './PostTweet.vue';
         methods: {
             submitTweet() {
                 axios.request({
-                    url : "https://tweeterest.ml/api/tweets",
+                    url : "https://www.kbtweeter.ml/api/tweets",
                     method : "POST",
                     headers : {
-                        'X-Api-Key' : process.env.VUE_APP_API_KEY,
                         'Content-Type': 'application/json'
                     },
                     data : {
@@ -76,10 +75,9 @@ import PostTweet from './PostTweet.vue';
             //then calls the function below using that id it loops through 
             whoSignedInFollows(){
                     axios.request({
-                        url : "https://tweeterest.ml/api/follows",
+                        url : "https://www.kbtweeter.ml/api/follows",
                         method : "GET",
                         headers : {
-                            'X-Api-Key' : process.env.VUE_APP_API_KEY,
                             'Content-Type': 'application/json'
                         },
                         params : {
@@ -99,7 +97,7 @@ import PostTweet from './PostTweet.vue';
             // pushes the tweets into one array that then sorts them from newest to oldest
             collectFollowedUsersTweets(a){
                     axios.request({
-                        url : "https://tweeterest.ml/api/tweets",
+                        url : "https://www.kbtweeter.ml/api/tweets",
                         method : "GET",
                         headers : {
                             'X-Api-Key' : process.env.VUE_APP_API_KEY,
