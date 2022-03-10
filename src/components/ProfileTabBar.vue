@@ -76,7 +76,7 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
         methods: {
             showMyTweets() {
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/tweets",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweets`,
                     method : "GET",
                     headers : {
                         'Content-Type': 'application/json'
@@ -93,7 +93,7 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
             },
             getFollowers(){
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/followers",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/followers`,
                     method : "GET",
                     headers : {
                         'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ import ProfileTabFollowers from './ProfileTabFollowers.vue';
             },
             getFollowing(){
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/follows",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/follows`,
                     method : "GET",
                     headers : {
                         'Content-Type': 'application/json'

@@ -95,7 +95,7 @@ import cookies from "vue-cookies"
             },
             postEditRequest(){
                     axios.request({
-                    url : "https://www.kbtweeter.ml/api/users",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/users`,
                     method : "PATCH",
                     headers : {
                         'Content-Type': 'application/json'

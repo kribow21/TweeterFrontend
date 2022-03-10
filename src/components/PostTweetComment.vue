@@ -118,7 +118,7 @@ import cookies from "vue-cookies"
             },
             editComment() {
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/comments",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/comments`,
                     method : "PATCH",
                     headers : {
                         'Content-Type': 'application/json'
@@ -138,7 +138,7 @@ import cookies from "vue-cookies"
             },
             deleteComment(){
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/comments",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/comments`,
                     method : "Delete",
                     headers : {
                         'Content-Type': 'application/json'
@@ -159,7 +159,7 @@ import cookies from "vue-cookies"
                 if(this.isLike == false){
                     console.log('false');
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/tweet-likes",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweet-likes`,
                         method : "POST",
                         headers : {
                             'Content-Type': 'application/json'
@@ -178,7 +178,7 @@ import cookies from "vue-cookies"
                 }else if(this.isLike == true){
                     console.log('true');
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/tweet-likes",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweet-likes`,
                         method : "DELETE",
                         headers : {
                             'Content-Type': 'application/json'
@@ -198,7 +198,7 @@ import cookies from "vue-cookies"
             },
                 getTweetLikes(){
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/tweet-likes",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweet-likes`,
                         method : "GET",
                         headers : {
                             'Content-Type': 'application/json'

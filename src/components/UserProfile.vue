@@ -40,7 +40,7 @@ import ProfileDeleteComp from './ProfileDeleteComp.vue'
         methods: {
             getProfile() {
                     axios.request({
-                    url : "https://www.kbtweeter.ml/api/users",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/users`,
                     method : "GET",
                     headers : {
                         'Content-Type': 'application/json'

@@ -50,7 +50,7 @@ import cookies from "vue-cookies"
             },
             confirmDelete(){
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/users",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/users`,
                     method : "DELETE",
                     headers : {
                         'Content-Type': 'application/json'

@@ -52,7 +52,7 @@ import cookies from "vue-cookies"
         methods: {
             getProfile() {
                     axios.request({
-                    url : "https://www.kbtweeter.ml/api/users",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/users`,
                     method : "GET",
                     headers : {
                         'X-Api-Key' : process.env.VUE_APP_API_KEY,
@@ -73,7 +73,7 @@ import cookies from "vue-cookies"
             followButtonClick(){
                 if(this.isFollowing == false){
                     axios.request({
-                        url : "https://kbtweeter.ml/api/follows",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/follows`,
                         method : "POST",
                         headers : {
                             'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ import cookies from "vue-cookies"
                 })
                 }else if (this.isFollowing == true){
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/follows",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/follows`,
                         method : "DELETE",
                         headers : {
                             'Content-Type': 'application/json'
@@ -110,7 +110,7 @@ import cookies from "vue-cookies"
             //conditional rendering method to determine what follow/unfollow button is displayed
             getFollows(){
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/follows",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/follows`,
                         method : "GET",
                         headers : {
                             'Content-Type': 'application/json'

@@ -238,7 +238,7 @@ import PostTweetComment from './PostTweetComment.vue';
                 if(this.isLike == false){
                     console.log('false');
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/tweet-likes",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweet-likes`,
                         method : "POST",
                         headers : {
                             'Content-Type': 'application/json'
@@ -256,7 +256,7 @@ import PostTweetComment from './PostTweetComment.vue';
                 }else if(this.isLike == true){
                     console.log('true');
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/tweet-likes",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweet-likes`,
                         method : "DELETE",
                         headers : {
                             'Content-Type': 'application/json'
@@ -275,7 +275,7 @@ import PostTweetComment from './PostTweetComment.vue';
             },
             getTweetLikes(){
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/tweet-likes",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweet-likes`,
                         method : "GET",
                         headers : {
                             'Content-Type': 'application/json'
@@ -308,7 +308,7 @@ import PostTweetComment from './PostTweetComment.vue';
             //emits to FeedBody/DiscoverBody that it needs to edit itself with the changes made
             editTweet() {
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/tweets",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweets`,
                     method : "PATCH",
                     headers : {
                         'Content-Type': 'application/json'
@@ -329,7 +329,7 @@ import PostTweetComment from './PostTweetComment.vue';
             //emits to FeedBody/DiscoverBody that it needs to edit itself with the changes made
             deleteTweet(){
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/tweets",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweets`,
                     method : "Delete",
                     headers : {
                         'Content-Type': 'application/json'
@@ -348,7 +348,7 @@ import PostTweetComment from './PostTweetComment.vue';
             },
             getComments(){
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/comments",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/comments`,
                     method : "GET",
                     headers : {
                         'Content-Type': 'application/json'
@@ -367,7 +367,7 @@ import PostTweetComment from './PostTweetComment.vue';
             },
             applyComment(){
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/comments",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/comments`,
                     method : "POST",
                     headers : {
                         'Content-Type': 'application/json'

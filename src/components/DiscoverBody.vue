@@ -49,7 +49,7 @@ import cookies from "vue-cookies"
         methods: {
             submitTweet() {
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/tweets",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweets`,
                     method : "POST",
                     headers : {
                         'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ import cookies from "vue-cookies"
             },
             showAllTweets() {
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/tweets",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweets`,
                     method : "GET",
                     headers : {
                         'Content-Type': 'application/json'

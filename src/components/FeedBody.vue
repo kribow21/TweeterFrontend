@@ -53,7 +53,7 @@ import PostTweet from './PostTweet.vue';
         methods: {
             submitTweet() {
                 axios.request({
-                    url : "https://www.kbtweeter.ml/api/tweets",
+                    url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweets`,
                     method : "POST",
                     headers : {
                         'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ import PostTweet from './PostTweet.vue';
             //then calls the function below using that id it loops through 
             whoSignedInFollows(){
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/follows",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/follows`,
                         method : "GET",
                         headers : {
                             'Content-Type': 'application/json'
@@ -97,7 +97,7 @@ import PostTweet from './PostTweet.vue';
             // pushes the tweets into one array that then sorts them from newest to oldest
             collectFollowedUsersTweets(a){
                     axios.request({
-                        url : "https://www.kbtweeter.ml/api/tweets",
+                        url : `${process.env.VUE_APP_BASE_DOMAIN}/api/tweets`,
                         method : "GET",
                         headers : {
                             'X-Api-Key' : process.env.VUE_APP_API_KEY,
